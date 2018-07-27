@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Arvo|Nunito');
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: arvo;
+    text-align: center;
+}
+
+h1,h2,h3 {
+    color: #6600cc;
+}
+
+.index_header {
+    color: #ffcb0c;
+    font-weight: bold;
+}
+
+#index_list {
+    padding: 0;
+}
+
+#index_list li {
+    list-style-type: none;
+    line-height: 7rem;
+    font-size: 18px;
+    text-align: center;
+}
