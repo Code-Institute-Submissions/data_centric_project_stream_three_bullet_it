@@ -8,6 +8,8 @@
     <title>Bullet Journal</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
 </head>
 
@@ -30,23 +32,32 @@
             </form>
         </div>
     </div>
-</div class="panel panel-default">
-{% if user_collections %} {% for collection in user_collections %}
-<div class="panel-body">
-    <a href="/{{username}}/{{collection.name}}"><i class="fas fa-plus-circle"></i>  {{collection.name}}</a>
+    {% if user_collections %} {% for collection in user_collections %}
+    <div class="panel-body">
+        <a href="/{{username}}/{{collection.name}}"><i class="fas fa-plus-circle"></i>  {{collection.name}}</a>
+        <form action="/{{username}}/delete_collection/{{collection._id}}" method="POST">
+            <input type="submit" value="Delete" />
+        </form>
+        <form action="/{{username}}/edit_collection/{{collection._id}}">
+            <input type="submit" value="Edit" />
+        </form>
+         
+    </div>
+    
 
-</div>
-{% endfor %} {% else %}
-<p>You have no lists!</p>
-{% endif %}
+    {% endfor %} {% else %}
+    <p>You have no lists!</p>
+    {% endif %}
 
 
-<button type="button" class="btn btn-default"><a href="/">Logout</a>
+    <button type="button" class="btn btn-default"><a href="/">Logout</a>
     </button>
-<button type="button" class="btn btn-default"> <a href="/{{username}}">Index</a>
+    <button type="button" class="btn btn-default"> <a href="/{{username}}">Index</a>
     </button>
 
-
-</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 
+    </body>
 
 </html>

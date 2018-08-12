@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bullet Journal</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
+</head>
+
+<body>
+    <h3>Edit Collection</h3>
+
+
+{% for i in collection.collection_items %}
+                <p>{{i.collection_item_name}}</p>
+{% endfor %}
+
+    <form action="/{{username}}/update_collection/{{collection._id}}" method="POST">
+        <input name="collection_name" type="text" value="{{collection.name}}">
+        <input type="submit" value="Update" /> 
+    </form>
+       {% for i in collection.collection_items %}
+        <form action="/{{username}}/update_collection/{{collection._id}}/{{i.item_id}}" method="POST">
+            <input name="{{i.item_id}}" type="text" value="{{i.collection_item_name}}"> 
+            <input type="submit" value="Update" /> 
+        </form>
+        {% endfor %}
+        
+
+    <a href="{{ url_for('get_collections', username=username) }}">
+                Cancel
+            </a>
+
+    </div>
+    </div>
+</body>
+
+</html>
