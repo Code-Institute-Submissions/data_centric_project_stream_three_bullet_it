@@ -1,36 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %} {% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Bullet Journal</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
-</head>
+<div class="row">
+    <h3> {{collection_name}}</h3>
 
-<body>
-    <h1> {{collection_name}}</h1>
-   
-    
-    <form method="POST" action="/{{username}}/{{collection_name}}/add_item">
-        <input type="text" name="collection_item_name"/>
-        <input type="submit" value="Add"/>
-    </form>
-    
-    {% if collection_items %}
-        {% for i in collection_items %}
-            {% for item in i.collection_items %}
-                <p>{{item.collection_item_name}}</p>
-            {% endfor %}
-        {% endfor %}
-    {% else %}
-        <p>You have no items!</p>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <form action="/{{username}}/{{collection_name}}/{{collection_id}}/add_item" method="POST">
+                    <div class="input-field col s8 add-collection">
+                        <input type="text" class="validate" name="collection_item_name" placeholder="Add item" />
+                    </div>
+                    <div class="col s4" id="add-collection-item-button">
+                        <button class="btn waves-effect waves-light" type="submit" /><i class="material-icons">add</i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="collection">
+    {% if collection_items %} {% for i in collection_items %} {% for item in i.collection_items %}
+    <div class="collection-item">{{item.collection_item_name}}
+        <form class="secondary-content" action="/{{username}}/update_collection/{{collection_id}}/{{item.item_id}}">
+            <button class="btn waves-effect waves-light" type="submit" /><i class="material-icons">edit</i></button>
+        </form>
+        <form class="secondary-content" action="/{{username}}/update_collection/{{collection_id}}/{{item.item_id}}">
+            <button class="btn waves-effect waves-light" type="submit" /><i class="material-icons">delete_forever</i></button>
+        </form>
+    </div>
+    {% endfor %} {% endfor %} {% else %}
+    <p>You have no items!</p>
     {% endif %}
-    <button type="button" class="btn btn-default"><a href="/{{username}}/get_collections">Collections</a></button> 
-    <button type="button" class="btn btn-default"> <a href="/{{username}}">Index</a>
-    </button>
-</body>
-</html>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <a class="btn waves-effect waves-light" href="/{{username}}/get_collections"><i class="material-icons">arrow_back</i></a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

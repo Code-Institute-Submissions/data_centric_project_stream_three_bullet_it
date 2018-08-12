@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block content %}
+<div class="row">
+    <h3>Edit Collection Items</h3>
+
+
+    {% for i in collection.collection_items %}
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <p>{{i.collection_item_name}}</p>
+                {% endfor %} {% for i in collection.collection_items %}
+                <form action="/{{username}}/update_collection/{{collection_id}}/{{i.item_id}}" method="POST">
+                    <input name="{{i.item_id}}" type="text" value="{{i.collection_item_name}}">
+                    <input type="submit" value="Update" />
+                </form>
+                {% endfor %}
+
+
+                <a href="{{ url_for('get_collections', username=username) }}">
+                Cancel
+            </a>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
