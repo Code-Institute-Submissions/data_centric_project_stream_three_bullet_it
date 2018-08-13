@@ -1,30 +1,31 @@
 {% extends 'base.html' %} {% block content %}
-    
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-4 col-sm-offset-4 ">
-                    <h1> Hi {{ username }}</h1>
-                    <h3>Let's get bulleting</h3>
-                </div>
-            </div>
-        </div>
 
+<div class="header">
+    <div class="header__bg"></div>
+    <div class="row">
+        <div class="col s12">
+            <h3 class="list-heading"> Hi {{ username }}</h3>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
         <div class="container">
             <div class="row">
-                <div class="col-sm-4 col-sm-offset-4 ">
-                    <h2 class="index_header">INDEX</h2>
+                <div class="col s12 ">
+                    <h2 class="index_header">Index</h2>
                     <ul id="index_list">
                         <li><input type="hidden" name="username" value="{{username}}" />
-                            <i class="far fa-star"><a href="/{{username}}"></i>Future Log</a>
+                           <a href="/{{username}}/show_future_log"><i class="material-icons">star</i> Future Log</a>
                         </li>
-                        <li><i class="far fa-star"></i>Monthly Log</li>
-                        <li><input type="hidden" name="username" value="{{username}}" /><i class="far fa-star"></i>
-                            <a href="/{{username}}/get_collections">Collections</a></li>
+                        <li><input type="hidden" name="username" value="{{username}}" />
+                            <a href="/{{username}}/get_collections"><i class="material-icons">star</i> Collections</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-       
+    </div>
+</div>
 
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 {% endblock %}

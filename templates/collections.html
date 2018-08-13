@@ -1,42 +1,49 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="row">
 
-    <h2>{{username}}'s Collections</h2>
-
-
-    <div class="container">
-        <div class="row">
-            <div class="col s12">
-                <form action="/{{username}}/create_new_collection" method="POST">
-                    <div class="input-field col s8 add-collection">
-                        <input type="text" class="validate" name="collection_name" placeholder="Add to collections.." />
-                    </div>
-                    <div class="col s4" id="add-collection-button">
-                        <button class="btn waves-effect waves-light" type="submit" /><i class="material-icons">add</i></button>
-                    </div>
-                </form>
-            </div>
+<div class="header">
+    <div class="header__bg"></div>
+    <div class="row">
+        <div class="col s12">
+            <h3 class="list-heading">{{username}}'s Collections</h3>
         </div>
     </div>
 </div>
 
-<div class="collection">
-    {% if user_collections %} {% for collection in user_collections %}
+<div class="container">
+    <div class="row">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <form action="/{{username}}/create_new_collection" method="POST">
+                        <div class="input-field col s8 add-collection">
+                            <input type="text" class="validate" name="collection_name" placeholder="Add to collections.." />
+                        </div>
+                        <div class="col s4" id="add-collection-button">
+                            <button class="btn waves-effect waves-light" type="submit" /><i class="material-icons">add</i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <a href="/{{username}}/{{collection.name}}/{{collection._id}}" class="collection-item"><i class="fas fa-plus-circle"></i>  {{collection.name}}
-        <form class="secondary-content" action="/{{username}}/delete_collection/{{collection._id}}" method="POST">
-            <button class="btn waves-effect waves-light" type="submit" /><i class="material-icons">delete_forever</i></button>
-        </form>
+    <div class="row">
+        <div class="collection">
+            {% if user_collections %} {% for collection in user_collections %}
+
+            <a href="/{{username}}/{{collection.name}}/{{collection._id}}" class="collection-item"><i class="fas fa-plus-circle"></i>  {{collection.name}}
         <form class="secondary-content" action="/{{username}}/edit_collection/{{collection._id}}">
             <button class="btn waves-effect waves-light" type="submit" /><i class="material-icons">edit</i></button>
         </form>
+        <form class="secondary-content" action="/{{username}}/delete_collection/{{collection._id}}" method="POST">
+            <button class="btn waves-effect waves-light" type="submit" /><i class="material-icons">delete_forever</i></button>
+        </form>
 </a> {% endfor %} {% else %}
-    <p>You have no lists!</p>
-    {% endif %}
-
-
-
+            <p>You have no lists!</p>
+            {% endif %}
+        </div>
+    </div>
 </div>
 
 {% endblock %}

@@ -1,8 +1,16 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="row">
-    <h3> {{collection_name}}</h3>
+<div class="header">
+    <div class="header__bg"></div>
+    <div class="row">
+        <div class="col s12">
+            <h3 class="list-heading">{{collection_name}}</h3>
+        </div>
+    </div>
+</div>
 
+<div class="container">
+<div class="row">
     <div class="container">
         <div class="row">
             <div class="col s12">
@@ -42,5 +50,5 @@
         </div>
     </div>
 </div>
-
+</div>
 {% endblock %}

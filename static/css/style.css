@@ -7,19 +7,19 @@ body {
     font-family: roboto;
     /*background: linear-gradient(90deg, white 20px, transparent 1%) center, linear-gradient(white 20px, transparent 1%) center, #808080;*/
     background-size: 22px 22px;
-    text-align: center;
+   
 }
 
 .journal {
-    background-image: url("https://images.unsplash.com/photo-1440335680360-79703e7032f9?ixlib=rb-0.3.5&s=6df545a09f998e842e9ade4934be08c7&auto=format&fit=crop&w=1350&q=80");
-    height: 60rem;
+    background-image: url("https://elliebelleevents.files.wordpress.com/2018/02/pexels-photo-390573.jpeg?w=1880");
+    height: 30rem;
     background-repeat: no-repeat;
     background-size: cover;
 
 }
 
 h1,h2,h3 {
-    color: #6600cc;
+    text-align: center
 }
 
 .index_header {
@@ -43,12 +43,47 @@ h1,h2,h3 {
 #index_list li {
     list-style-type: none;
     line-height: 7rem;
-    font-size: 18px;
     text-align: center;
+    font-size: 24px;
 }
 
+
+
 nav {
-    background-color:#AF7AC5;;
+    background-color:#AF7AC5;
+}
+
+
+/*Header*/
+.header {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+
+.header__bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(#af7ac5, #C39BD3, #D7BDE2);
+  transform: skewY(-6deg);
+  transform-origin: top left;
+}
+
+.list-heading {
+  margin: 0;
+  padding: 100px 0;
+  font: 44px;
+  text-align: center;
+}
+
+.header .list-heading {
+  position: relative;
+  color: #ffffff;
 }
 
 /*Collections Display*/
@@ -87,4 +122,60 @@ nav {
 
 #add-collection-item-button {
   padding-top: 2em;
+}
+
+/*Future Log*/
+
+
+.calendar_month {
+    padding: 0;
+    height: 30em;
+   
+}
+
+.unassigned {
+    height: 100%;
+}
+
+.future_log_unassigned li:focus {
+    outline: 2px solid green;
+}
+
+
+
+.radio_buttons {
+    margin:4px;
+    float:left;
+}
+
+.radio_buttons label {
+    float:left;
+    width:100px;
+    margin:4px;
+    background-color:#EFEFEF;
+    border-radius:4px;
+    border:1px solid #D0D0D0;
+     display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+.radio_buttons label span {
+    text-align:center;
+    padding:13px 0px;
+    display:block;
+}
+
+.radio_buttons label input {
+    position:absolute;
+    top:-20px;
+}
+
+#futuremonthitem input:checked + span {
+    background-color:#404040;
+    color:#F7F7F7;
+}
+#months input:checked + span {
+    background-color:#404040;
+    color:#F7F7F7;
 }

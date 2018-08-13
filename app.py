@@ -87,6 +87,31 @@ def add_item_to_collection(username, collection_name, collection_id):
     save_collection_items_to_mongo(username, collection_name, collection_id, collection_item_details)
     return redirect(username + "/" + collection_name + "/" + collection_id)
 
+# Future Log
+
+@app.route("/<username>/add_future_log", methods=["POST"]) 
+def assign_item_to_future_log(username):
+    future_month= request.form.get("month")
+    both = request.form.get("futuremonthitem")
+    words = both.split()
+    future_month_collection= words[0]
+    future_month_item = words[1]
+    future_month_list_item_id = words[2]
+    add_future_month_to_task(username, future_month_collection, future_month, future_month_item, future_month_list_item_id)
+    user_collections = load_collections_by_username(username)
+    user_collection = list(user_collections)
+    return render_template('future_log.html', username=username, user_collections=user_collections)  
+
+
+@app.route("/<username>/show_future_log")
+def show_future_log(username):
+     user_collections = load_collections_by_username(username)
+     user_collections = list(user_collections)
+     return render_template('future_log.html', username=username, user_collections=user_collections) 
+
+
+
+
 #---------------------------------------functions--------------------------------------
 def get_max_id(username, collection_name, collection_id):
         collection = mongo.db[username].find_one({"_id":ObjectId(collection_id)})
@@ -112,6 +137,14 @@ def save_collection_items_to_mongo(username, collection_name, collection_id, new
 
 def load_collection_items_from_mongo(username, collection_id):
         return mongo.db[username].find({"_id":ObjectId(collection_id)})
+        
+def add_future_month_to_task(username, future_month_collection, future_month, future_month_item, future_month_list_item_id):
+    print("add")
+    print(future_month)
+    print(future_month_item)
+    print(future_month_collection)
+    print(future_month_list_item_id)
+    test = mongo.db[username].update({"name":future_month_collection, "collection_items.description":future_month_item}, {"$set": {"collection_items.$.future_log":future_month}})
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT')), debug=True)
