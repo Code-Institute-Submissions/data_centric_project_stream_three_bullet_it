@@ -32,7 +32,7 @@
         <div class="collection">
             {% if user_collections %} {% for collection in user_collections %}
 
-            <a href="/{{username}}/{{collection.name}}/{{collection._id}}" class="collection-item"><i class="fas fa-plus-circle"></i>  {{collection.name}}
+            <a href="/{{username}}/{{collection.name}}/{{collection._id}}" class="collection-item"><i class="fas fa-plus-circle"></i>{{collection.name}}
         <form class="secondary-content" action="/{{username}}/edit_collection/{{collection._id}}">
             <button class="btn waves-effect waves-light" type="submit" /><i class="material-icons">edit</i></button>
         </form>

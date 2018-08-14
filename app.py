@@ -33,6 +33,7 @@ def get_collections(username):
      user_collections = load_collections_by_username(username)
      return render_template('collections.html', username=username, user_collections=user_collections)  
 
+
 @app.route("/<username>/create_new_collection", methods=["POST"]) 
 def create_collection(username):
     collection_name= request.form['collection_name']
@@ -54,28 +55,22 @@ def update_collection(username, collection_id):
     mongo.db[username].update({"_id":ObjectId(collection_id)}, {"$set": {"name": request.form['collection_name']}})
     return redirect(username + "/get_collections")
 
-# @app.route("/<username>/edit_collection/<collection_id>/<item_id>")
-# def edit_collection(username, collection_id, item_id):
-#     collection=mongo.db[username].find_one({'_id': ObjectId(collection_id)})
-#     return render_template('edit_collection_item.html', username=username, collection=collection, collection_id=collection_id, item_id=item_id)
-
-@app.route("/<username>/update_collection/<collection_id>/<item_id>", methods=['POST'])
-def update_collection_item_name(username, collection_id, item_id):
-    updated_text = request.form[item_id]
-    mongo.db[username].update({"_id":ObjectId(collection_id), "collection_items": {"$elemMatch": {"item_id": int(item_id)}}}, {"$set": {"collection_items.$.collection_item_name":updated_text}})
-
-    return redirect(username + "/get_collections")
-  
   
 @app.route("/<username>/<collection_name>/<collection_id>") 
 def view_collection_by_user(username, collection_name, collection_id):
     collection_items = load_collection_items_from_mongo(username, collection_id)
     return render_template("collection_items.html", username=username, collection_name=collection_name, collection_items=collection_items, collection_id=collection_id)
 
+
+@app.route("/<username>/add_collection_item/<collection_name>/<collection_id>")
+def add_collection_item(username, collection_name, collection_id):
+    collection=mongo.db[username].find_one({'_id': ObjectId(collection_id)})
+    return render_template('add_collection_item.html', username=username, collection_name=collection_name, collection=collection, collection_id=collection_id)    
     
 @app.route("/<username>/<collection_name>/<collection_id>/add_item", methods=["POST"]) 
 def add_item_to_collection(username, collection_name, collection_id):
     collection_item= request.form['collection_item_name']
+    item_bullet = request.form['bullet']
     max_id = get_max_id(username, collection_name, collection_id)
     try: 
         int(max_id)
@@ -83,9 +78,36 @@ def add_item_to_collection(username, collection_name, collection_id):
     except ValueError:
         new_id = 1
     
-    collection_item_details = {"collection_item_name": collection_item, "item_id": new_id }
+    collection_item_details = {"collection_item_name": collection_item, "item_id": new_id, "item_bullet": item_bullet }
     save_collection_items_to_mongo(username, collection_name, collection_id, collection_item_details)
     return redirect(username + "/" + collection_name + "/" + collection_id)
+    
+    
+@app.route("/<username>/edit_collection_item/<collection_name>/<collection_id>/<item_id>")
+def edit_collection_item_name(username, collection_name, collection_id, item_id):
+    collection=mongo.db[username].find_one({'_id': ObjectId(collection_id)})
+    return render_template('edit_collection_item.html', username=username, collection_name=collection_name, collection=collection, collection_id=collection_id, item_id=item_id)
+
+@app.route("/<username>/update_collection_item/<collection_name>/<collection_id>/<item_id>", methods=['POST'])
+def update_collection_item_name(username, collection_name, collection_id, item_id):
+    updated_text = request.form[item_id]
+    print(updated_text)
+    updated_bullet = request.form['item_bullet']
+    print(updated_bullet)
+    mongo.db[username].update({"_id":ObjectId(collection_id), "collection_items": {"$elemMatch": {"item_id": int(item_id)}}}, {"$set": {"collection_items.$.collection_item_name":updated_text}})
+    mongo.db[username].update({"_id":ObjectId(collection_id), "collection_items": {"$elemMatch": {"item_id": int(item_id)}}}, {"$set": {"collection_items.$.item_bullet":updated_bullet}})
+    collection_items = load_collection_items_from_mongo(username, collection_id)
+    return render_template("collection_items.html", username=username, collection_name=collection_name, collection_items=collection_items, collection_id=collection_id)
+
+@app.route("/<username>/delete_collection_item/<collection_name>/<collection_id>/<item_id>", methods=['POST'])
+def delete_collection_item_name(username, collection_name, collection_id, item_id):
+    collection=mongo.db[username].find_one({'_id': ObjectId(collection_id)})
+    deleted_id = request.form[item_id]
+    print (deleted_id)
+    mongo.db[username].update({"_id":ObjectId(collection_id)}, {"$pull":{"collection_items": {"item_id": int(deleted_id)}}})
+    collection_items = load_collection_items_from_mongo(username, collection_id)
+    return render_template("collection_items.html", username=username, collection=collection, collection_name=collection_name, collection_items=collection_items, collection_id=collection_id)
+  
 
 # Future Log
 

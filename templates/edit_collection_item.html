@@ -1,27 +1,52 @@
 {% extends 'base.html' %} {% block content %}
-<div class="row">
-    <h3>Edit Collection Items</h3>
+<div class="header">
+    <div class="header__bg"></div>
+    <div class="row">
+        <div class="col s12">
+            <h3 class="list-heading">Edit Collection Item</h3>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <h3>{{collection_name}}</h3>
+                    {% for i in collection.collection_items %} {% if i.item_id|string() == item_id|string() %}
+                    <form action="/{{username}}/update_collection_item/{{collection_name}}/{{collection_id}}/{{i.item_id}}" method="POST">
+                        <input name="{{i.item_id}}" type="text" value="{{i.collection_item_name}}">
+
+                        <select name="item_bullet" class="selectpicker form-control">
+                                <option value="23fa" type="text">&#x23fa; : To Do</option>
+                                  <option value="58" type="text">&#x58; : Done</option>
+                                    <option value="25b6" type="text">&#x25b6; : Migrate</option>
+                                    <option value="2b58" type="text">&#x2b58; : Event</option>
+                                    <option value="ff0d" type="text">&#xff0d; : Note</option>
+                                    <option value="1f7b7" type="text">&#x1f7b7; : Important</option>
+                                </select>
+                        <input class="btn waves-effect waves-light" type="submit" value="Update" />
+                    </form>
+
+                    {% endif %} {% endfor %}
+
+                </div>
+            </div>
+        </div>
 
 
-    {% for i in collection.collection_items %}
-    <div class="container">
-        <div class="row">
-            <div class="col s12">
-                <p>{{i.collection_item_name}}</p>
-                {% endfor %} {% for i in collection.collection_items %}
-                <form action="/{{username}}/update_collection/{{collection_id}}/{{i.item_id}}" method="POST">
-                    <input name="{{i.item_id}}" type="text" value="{{i.collection_item_name}}">
-                    <input type="submit" value="Update" />
-                </form>
-                {% endfor %}
-
-
-                <a href="{{ url_for('get_collections', username=username) }}">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <a class="btn waves-effect waves-light" href="{{ url_for('view_collection_by_user', username=username, collection_name=collection_name, collection_id=collection_id) }}">
                 Cancel
             </a>
-
+                </div>
             </div>
         </div>
     </div>
+
+</div>
 </div>
 {% endblock %}

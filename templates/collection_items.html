@@ -9,46 +9,50 @@
     </div>
 </div>
 
-<div class="container">
-<div class="row">
-    <div class="container">
-        <div class="row">
-            <div class="col s12">
-                <form action="/{{username}}/{{collection_name}}/{{collection_id}}/add_item" method="POST">
-                    <div class="input-field col s8 add-collection">
-                        <input type="text" class="validate" name="collection_item_name" placeholder="Add item" />
-                    </div>
-                    <div class="col s4" id="add-collection-item-button">
-                        <button class="btn waves-effect waves-light" type="submit" /><i class="material-icons">add</i></button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
 
-<div class="collection">
-    {% if collection_items %} {% for i in collection_items %} {% for item in i.collection_items %}
-    <div class="collection-item">{{item.collection_item_name}}
-        <form class="secondary-content" action="/{{username}}/update_collection/{{collection_id}}/{{item.item_id}}">
-            <button class="btn waves-effect waves-light" type="submit" /><i class="material-icons">edit</i></button>
-        </form>
-        <form class="secondary-content" action="/{{username}}/update_collection/{{collection_id}}/{{item.item_id}}">
-            <button class="btn waves-effect waves-light" type="submit" /><i class="material-icons">delete_forever</i></button>
-        </form>
-    </div>
-    {% endfor %} {% endfor %} {% else %}
-    <p>You have no items!</p>
-    {% endif %}
-</div>
+
 
 <div class="container">
     <div class="row">
-        <div class="col s12">
-            <a class="btn waves-effect waves-light" href="/{{username}}/get_collections"><i class="material-icons">arrow_back</i></a>
+        <div class="container">
+            <div class="row">
+                <div class="col s12 center-align">
+                    <form action="/{{username}}/add_collection_item/{{collection_name}}/{{collection_id}}">
+                        <button class="btn waves-effect waves-light" type="submit" />ADD ITEM</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
+
+
+    <div class="collection">
+        {% if collection_items %} {% for i in collection_items %} {% for item in i.collection_items %}
+        <div class="collection-item">&#x{{item.item_bullet}}; {{item.collection_item_name}}
+            <form class="secondary-content" action="/{{username}}/edit_collection_item/{{collection_name}}/{{collection_id}}/{{item.item_id}}">
+                <button class="btn waves-effect waves-light" type="submit" /><i class="material-icons">edit</i></button>
+            </form>
+
+            <form class="secondary-content" action="/{{username}}/delete_collection_item/{{collection_name}}/{{collection_id}}/{{item.item_id}}" method="POST">
+                <input name="{{item.item_id}}" type="hidden" value="{{item.item_id}}">
+                <button class="btn waves-effect waves-light" type="submit" /><i class="material-icons">delete_forever</i></button>
+            </form>
+
+        </div>
+
+        {% endfor %} {% endfor %} {% else %}
+        <p>You have no items!</p>
+        {% endif %}
+    </div>
 </div>
-</div>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <a class="btn waves-effect waves-light" href="/{{username}}/get_collections"><i class="material-icons">arrow_back</i></a>
+            </div>
+        </div>
+    </div>
+
+
 {% endblock %}
