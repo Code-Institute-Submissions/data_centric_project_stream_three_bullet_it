@@ -27,25 +27,49 @@
     </div>
 
 
-    <div class="collection">
-        {% if collection_items %} {% for i in collection_items %} {% for item in i.collection_items %}
-        <div class="collection-item">&#x{{item.item_bullet}}; {{item.collection_item_name}}
-            <form class="secondary-content" action="/{{username}}/edit_collection_item/{{collection_name}}/{{collection_id}}/{{item.item_id}}">
+   
+
+
+
+<div class="row">
+<ul class="collapsible" data-collapsible="accordion">
+  {% if collection_items %} 
+  {% for i in collection_items %} 
+  {% for item in i.collection_items %}
+  <li>
+    <div class="collapsible-header">
+     
+      <div class="task_header col s7">
+           
+        <h6>&#x{{item.item_bullet}}; {{item.collection_item_name}} </h6>
+      </div>
+       <div class="col s5">
+       <i class="material-icons">expand_more</i>
+        <form class="secondary-content" action="/{{username}}/edit_collection_item/{{collection_name}}/{{collection_id}}/{{item.item_id}}">
                 <button class="btn waves-effect waves-light" type="submit" /><i class="material-icons">edit</i></button>
             </form>
-
-            <form class="secondary-content" action="/{{username}}/delete_collection_item/{{collection_name}}/{{collection_id}}/{{item.item_id}}" method="POST">
+         <form class="secondary-content" action="/{{username}}/delete_collection_item/{{collection_name}}/{{collection_id}}/{{item.item_id}}" method="POST">
                 <input name="{{item.item_id}}" type="hidden" value="{{item.item_id}}">
                 <button class="btn waves-effect waves-light" type="submit" /><i class="material-icons">delete_forever</i></button>
             </form>
-
-        </div>
-
-        {% endfor %} {% endfor %} {% else %}
+      </div>
+    </div>
+    <div class="collapsible-body">
+      <ul>
+          <li> Details: {{item.description}}</li>
+          <li> Future Log: {{item.future_log}}</li>
+          <li> Due Date: {{item.due_date}}</li>
+      </ul>
+           
+    </div>
+  </li>
+   {% endfor %} {% endfor %} {% else %}
         <p>You have no items!</p>
         {% endif %}
-    </div>
+</ul>
 </div>
+</div>
+
     <div class="container">
         <div class="row">
             <div class="col s12">

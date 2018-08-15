@@ -19,17 +19,36 @@
                         <input type="text" class="validate" name="collection_item_name" placeholder="Add item" />
                     </div>
                     <div class="input-field col s12">
+                        <input type="text" class="validate" name="collection_item_description" placeholder="Add description" />
+                    </div>
+                    <div class="input-field col s12">
                      <select name="bullet" class="selectpicker form-control">
                                 <option value="23fa" type="text">&#x23fa; : To Do</option>
-                                  <option value="58" type="number">&#x58; : Done</option>
-                                    <option value="25b6" type="number">&#x25b6; : Migrate</option>
-                                    <option value="2b58" type="number">&#x2b58; : Event</option>
-                                    <option value="ff0d" type="number">&#xff0d; : Note</option>
-                                    <option value="1f7b7" type="number">&#x1f7b7; : Important</option>
+                                  <option value="58" type="text">&#x58; : Done</option>
+                                    <option value="25b6" type="text">&#x25b6; : Migrate</option>
+                                    <option value="2b58" type="text">&#x2b58; : Event</option>
+                                    <option value="ff0d" type="text">&#xff0d; : Note</option>
+                                    <option value="1f7b7" type="text">&#x1f7b7; : Important</option>
                                 </select>
                     </div>
-                    
-                    
+                    <div class="input-field col s12">
+                     <select name="future_log" class="selectpicker form-control">
+                                <option value="not set" type="text">Set Later</option>
+                                  <option value="July" type="text">July</option>
+                                    <option value="August" type="text">August</option>
+                                    <option value="September" type="text">September</option>
+                                    <option value="October" type="text">October</option>
+                                    <option value="November" type="text">November</option>
+                                    <option value="December" type="text">December</option>
+                                </select>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">today</i>
+                            <input id="due_date" name="due_date" type="text" class="datepicker">
+                            <label for="icon_prefix">Due Date</label>
+                        </div>
+                    </div>
                     <div class="col s12" id="add-collection-item-button">
                         <button class="btn waves-effect waves-light" type="submit" /><i class="material-icons">add</i></button>
                     </div>

@@ -36,34 +36,35 @@
 
                 <form action="/{{username}}/add_future_log" method="POST">
                     <div class="row">
-                    <div class="col s6">
-                        <div class="radio_buttons">
-                            <div id="futuremonthitem">
-                                {% if user_collections %} {% for collection in user_collections %} {% for collection_items in collection.collection_items %} {% if collection_items.future_log == 'not set' %}
-                                <label><input type="radio" name="futuremonthitem" value="{{collection.name}} {{collection_items.description}} {{collection_items.id_number}}"><span>{{collection_items.description}}</span></label> {% endif%} {% endfor %}
-                                {% endfor %} {% endif %}
+                        <div class="col s6">
+                            <div class="radio_buttons">
+                                <div id="futuremonthitem">
+                                    {% if user_collections %} {% for collection in user_collections %} {% for collection_items in collection.collection_items %} {% if collection_items.future_log == 'not set' %}
+                                    <label><input type="radio" name="futuremonthitem" value="{{collection.name}} {{collection_items.item_id}} {{collection_items.collection_item_name}} "><span>{{collection_items.description}}</span></label> {% endif%}
+                                    {% endfor %} {% endfor %} {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s6">
+                            <div class="radio_buttons">
+                                <div id="months">
+                                    <label><input type="radio" name="month" value="July"><span>July</span></label>
+                                    <label><input type="radio" name="month" value="August"><span>August</span></label>
+                                    <label><input type="radio" name="month" value="September"><span>September</span></label>
+                                    <label><input type="radio" name="month" value="October"><span>October</span></label>
+                                    <label><input type="radio" name="month" value="November"><span>November</span></label>
+                                    <label><input type="radio" name="month" value="December"><span>December</span></label>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col s6">
-                        <div class="radio_buttons">
-                            <div id="months">
-                                <label><input type="radio" name="month" value="July"><span>July</span></label>
-                                <label><input type="radio" name="month" value="August"><span>August</span></label>
-                                <label><input type="radio" name="month" value="September"><span>September</span></label>
-                                <label><input type="radio" name="month" value="October"><span>October</span></label>
-                                <label><input type="radio" name="month" value="November"><span>November</span></label>
-                                <label><input type="radio" name="month" value="December"><span>December</span></label>
-                            </div>
-                        </div>
-                    </div>
-                   </div>
+                    
                     <div class="row">
                         <div class="col s12 center-align">
                             <button class="btn waves-effect waves-light" type="submit" />assign</button>
                         </div>
-                </div>
-                    
+                    </div>
+
                 </form>
             </div>
         </div>
@@ -123,16 +124,13 @@
                 </div>
                 <div class="col s12 m6 calendar_month card z-depth-5">
                     <h3 class="card-title">October</h3>
-                    {% if user_collections %} {% for collections in user_collections %}
+                    {% if user_collections %} {% for collections in user_collections %} {% for collection_items in collections.collection_items %} {% if collection_items.future_log == 'October' %}
                     <div class="card-content">
-                        <!--<a href="/{{username}}/{{collections.name}}"><i class="fas fa-plus-circle"></i>  {{collections.name}}</a>-->
                         <ul>
-                            {% for collection_items in collections.collection_items %} {% if collection_items.future_log == 'October' %}
-                            <li>{{collection_items.description}}</li>
-                            {% endif%} {% endfor %}
+                            <li>&#x{{collection_items.item_bullet}}; {{collection_items.description}}</li>
                         </ul>
                     </div>
-                    {% endfor %} {% else %}
+                    {% endif%} {% endfor %} {% endfor %} {% else %}
                     <p>You have no lists!</p>
                     {% endif %}
                 </div>
@@ -176,3 +174,4 @@
 </div>
 
 {% endblock %}
+

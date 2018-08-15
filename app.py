@@ -70,7 +70,10 @@ def add_collection_item(username, collection_name, collection_id):
 @app.route("/<username>/<collection_name>/<collection_id>/add_item", methods=["POST"]) 
 def add_item_to_collection(username, collection_name, collection_id):
     collection_item= request.form['collection_item_name']
+    description = request.form['collection_item_description']
     item_bullet = request.form['bullet']
+    future_log = request.form['future_log']
+    due_date = request.form['due_date']
     max_id = get_max_id(username, collection_name, collection_id)
     try: 
         int(max_id)
@@ -78,7 +81,6 @@ def add_item_to_collection(username, collection_name, collection_id):
     except ValueError:
         new_id = 1
     
-    collection_item_details = {"collection_item_name": collection_item, "item_id": new_id, "item_bullet": item_bullet }
     save_collection_items_to_mongo(username, collection_name, collection_id, collection_item_details)
     return redirect(username + "/" + collection_name + "/" + collection_id)
     
@@ -103,7 +105,6 @@ def update_collection_item_name(username, collection_name, collection_id, item_i
 def delete_collection_item_name(username, collection_name, collection_id, item_id):
     collection=mongo.db[username].find_one({'_id': ObjectId(collection_id)})
     deleted_id = request.form[item_id]
-    print (deleted_id)
     mongo.db[username].update({"_id":ObjectId(collection_id)}, {"$pull":{"collection_items": {"item_id": int(deleted_id)}}})
     collection_items = load_collection_items_from_mongo(username, collection_id)
     return render_template("collection_items.html", username=username, collection=collection, collection_name=collection_name, collection_items=collection_items, collection_id=collection_id)
@@ -117,8 +118,8 @@ def assign_item_to_future_log(username):
     both = request.form.get("futuremonthitem")
     words = both.split()
     future_month_collection= words[0]
-    future_month_item = words[1]
-    future_month_list_item_id = words[2]
+    future_month_list_item_id = words[1]
+    future_month_item = words[2]
     add_future_month_to_task(username, future_month_collection, future_month, future_month_item, future_month_list_item_id)
     user_collections = load_collections_by_username(username)
     user_collection = list(user_collections)
@@ -166,6 +167,7 @@ def add_future_month_to_task(username, future_month_collection, future_month, fu
     print(future_month_item)
     print(future_month_collection)
     print(future_month_list_item_id)
+
     test = mongo.db[username].update({"name":future_month_collection, "collection_items.description":future_month_item}, {"$set": {"collection_items.$.future_log":future_month}})
 
 if __name__ == '__main__':
