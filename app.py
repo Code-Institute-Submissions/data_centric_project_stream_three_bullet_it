@@ -117,12 +117,12 @@ def assign_item_to_future_log(username):
     future_month= request.form.get("month")
     both = request.form.get("futuremonthitem")
     words = both.split()
-    future_month_collection= words[0]
-    future_month_list_item_id = words[1]
-    future_month_item = words[2]
-    add_future_month_to_task(username, future_month_collection, future_month, future_month_item, future_month_list_item_id)
+    collection_id = words[0]
+    item_id = words[1]
+    item = words[2]
+    add_future_month_to_task(username, collection_id, future_month, item_id)
     user_collections = load_collections_by_username(username)
-    user_collection = list(user_collections)
+    user_collections = list(user_collections)
     return render_template('future_log.html', username=username, user_collections=user_collections)  
 
 
@@ -161,14 +161,8 @@ def save_collection_items_to_mongo(username, collection_name, collection_id, new
 def load_collection_items_from_mongo(username, collection_id):
         return mongo.db[username].find({"_id":ObjectId(collection_id)})
         
-def add_future_month_to_task(username, future_month_collection, future_month, future_month_item, future_month_list_item_id):
-    print("add")
-    print(future_month)
-    print(future_month_item)
-    print(future_month_collection)
-    print(future_month_list_item_id)
-
-    test = mongo.db[username].update({"name":future_month_collection, "collection_items.description":future_month_item}, {"$set": {"collection_items.$.future_log":future_month}})
+def add_future_month_to_task(username, collection_id, future_month, item_id):
+       return mongo.db[username].update({"_id":ObjectId(collection_id), "collection_items": {"$elemMatch": {"item_id":int(item_id)}}}, {"$set": {"collection_items.$.future_log":future_month}})
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT')), debug=True)

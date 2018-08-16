@@ -40,7 +40,7 @@
                             <div class="radio_buttons">
                                 <div id="futuremonthitem">
                                     {% if user_collections %} {% for collection in user_collections %} {% for collection_items in collection.collection_items %} {% if collection_items.future_log == 'not set' %}
-                                    <label><input type="radio" name="futuremonthitem" value="{{collection.name}} {{collection_items.item_id}} {{collection_items.collection_item_name}} "><span>{{collection_items.description}}</span></label> {% endif%}
+                                    <label><input type="radio" name="futuremonthitem" value="{{collection._id}} {{collection_items.item_id}} {{collection_items.collection_item_name}} "><span>{{collection_items.description}}</span></label> {% endif%}
                                     {% endfor %} {% endfor %} {% endif %}
                                 </div>
                             </div>
@@ -76,32 +76,32 @@
                 <div class="col s12 m6 calendar_month card z-depth-5">
 
                     <h3 class="card-title">July</h3>
-                    {% if user_collections %} {% for collections in user_collections %}
+                    {% if user_collections %} 
                     <div class="card-content">
-                        <!--<a href="/{{username}}/{{collections.name}}"><i class="fas fa-plus-circle"></i>  {{collections.name}}</a>-->
                         <ul>
+                            {% for collections in user_collections %}
                             {% for collection_items in collections.collection_items %} {% if collection_items.future_log == 'July' %}
-                            <li>{{collection_items.description}}</li>
-                            {% endif%} {% endfor %}
+                            <li>&#x{{collection_items.item_bullet}}; {{collection_items.description}}</li>
+                            {% endif%} {% endfor %}{% endfor %}
                         </ul>
                     </div>
-                    {% endfor %} {% else %}
+                     {% else %}
                     <p>You have no lists!</p>
                     {% endif %}
 
                 </div>
                 <div class="col s12 m6 calendar_month card z-depth-5">
                     <h3 class="card-title">August</h3>
-                    {% if user_collections %} {% for collections in user_collections %}
+                    {% if user_collections %} 
                     <div class="card-content">
-                        <!--<a href="/{{username}}/{{collections.name}}"><i class="fas fa-plus-circle"></i>  {{collections.name}}</a>-->
                         <ul>
+                            {% for collections in user_collections %}
                             {% for collection_items in collections.collection_items %} {% if collection_items.future_log == 'August' %}
-                            <li>{{collection_items.description}}</li>
-                            {% endif%} {% endfor %}
+                            <li>&#x{{collection_items.item_bullet}}; {{collection_items.description}}</li>
+                            {% endif%} {% endfor %} {% endfor %} 
                         </ul>
                     </div>
-                    {% endfor %} {% else %}
+                   {% else %}
                     <p>You have no lists!</p>
                     {% endif %}
                 </div>
@@ -109,28 +109,30 @@
             <div class="col s12 calendar_row">
                 <div class="col s12 m6 calendar_month card z-depth-5">
                     <h3 class="card-title">September</h3>
-                    {% if user_collections %} {% for collections in user_collections %}
+                    {% if user_collections %} 
                     <div class="card-content">
-                        <!--<a href="/{{username}}/{{collections.name}}"><i class="fas fa-plus-circle"></i>  {{collections.name}}</a>-->
-                        <ul>
+                         <ul>
+                             {% for collections in user_collections %}
                             {% for collection_items in collections.collection_items %} {% if collection_items.future_log == 'September' %}
-                            <li>{{collection_items.description}}</li>
-                            {% endif%} {% endfor %}
+                            <li>&#x{{collection_items.item_bullet}}; {{collection_items.description}}</li>
+                            {% endif%} {% endfor %} {% endfor %}
                         </ul>
                     </div>
-                    {% endfor %} {% else %}
+                     {% else %}
                     <p>You have no lists!</p>
                     {% endif %}
                 </div>
                 <div class="col s12 m6 calendar_month card z-depth-5">
                     <h3 class="card-title">October</h3>
-                    {% if user_collections %} {% for collections in user_collections %} {% for collection_items in collections.collection_items %} {% if collection_items.future_log == 'October' %}
+                    {% if user_collections %} 
                     <div class="card-content">
                         <ul>
+                            {% for collections in user_collections %} {% for collection_items in collections.collection_items %} {% if collection_items.future_log == 'October' %}
                             <li>&#x{{collection_items.item_bullet}}; {{collection_items.description}}</li>
+                             {% endif%} {% endfor %} {% endfor %}
                         </ul>
                     </div>
-                    {% endif%} {% endfor %} {% endfor %} {% else %}
+                    {% else %}
                     <p>You have no lists!</p>
                     {% endif %}
                 </div>
@@ -138,31 +140,31 @@
             <div class="col s12 calendar_row">
                 <div class="col s12 m6 calendar_month card z-depth-5">
                     <h3 class="card-title">November</h3>
-                    {% if user_collections %} {% for collections in user_collections %}
+                    {% if user_collections %} 
                     <div class="card-content">
-                        <!--<a href="/{{username}}/{{collections.name}}"><i class="fas fa-plus-circle"></i>  {{collections.name}}</a>-->
                         <ul>
+                            {% for collections in user_collections %}
                             {% for collection_items in collections.collection_items %} {% if collection_items.future_log == 'November' %}
-                            <li>{{collection_items.description}}</li>
-                            {% endif%} {% endfor %}
+                            <li>&#x{{collection_items.item_bullet}}; {{collection_items.description}}</li>
+                            {% endif%} {% endfor %}{% endfor %}
                         </ul>
                     </div>
-                    {% endfor %} {% else %}
+                     {% else %}
                     <p>You have no lists!</p>
                     {% endif %}
                 </div>
                 <div class="col s12 m6 calendar_month card z-depth-5">
                     <h3 class="card-title">December</h3>
-                    {% if user_collections %} {% for collections in user_collections %}
+                    {% if user_collections %} 
                     <div class="card-content">
-                        <!--<a href="/{{username}}/{{collections.name}}"><i class="fas fa-plus-circle"></i>  {{collections.name}}</a>-->
-                        <ul>
+                         <ul>
+                             {% for collections in user_collections %}
                             {% for collection_items in collections.collection_items %} {% if collection_items.future_log == 'December' %}
-                            <li>{{collection_items.description}}</li>
-                            {% endif%} {% endfor %}
+                            <li>&#x{{collection_items.item_bullet}}; {{collection_items.description}}</li>
+                            {% endif%} {% endfor %} {% endfor %} 
                         </ul>
                     </div>
-                    {% endfor %} {% else %}
+                    {% else %}
                     <p>You have no lists!</p>
                     {% endif %}
                 </div>
