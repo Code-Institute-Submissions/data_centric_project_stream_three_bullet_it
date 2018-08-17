@@ -80,7 +80,7 @@ def add_item_to_collection(username, collection_name, collection_id):
         new_id = max_id
     except ValueError:
         new_id = 1
-    collection_item_details = {"collection_item_name": collection_item, "description": description, "item_id": new_id, "item_bullet": item_bullet, "future_log":future_log, "due_date":due_date }
+    collection_item_details = {"collection_item_name": collection_item, "item_id": new_id, "item_bullet": item_bullet }
     save_collection_items_to_mongo(username, collection_name, collection_id, collection_item_details)
     return redirect(username + "/" + collection_name + "/" + collection_id)
     
