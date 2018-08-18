@@ -1,4 +1,5 @@
 import os
+import json
 from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -23,6 +24,8 @@ def get_index():
 def do_login():
     username = request.form['username']
     return redirect(username)
+
+
 
 @app.route("/<username>") 
 def get_userpage(username):
@@ -94,12 +97,40 @@ def edit_collection_item_name(username, collection_name, collection_id, item_id)
 def update_collection_item_name(username, collection_name, collection_id, item_id):
     updated_text = request.form[item_id]
     print(updated_text)
+    updated_description = request.form['collection_item_description']
     updated_bullet = request.form['item_bullet']
+    updated_due_date = request.form['due_date']
     print(updated_bullet)
+    updated_future_log = request.form['future_log']
     mongo.db[username].update({"_id":ObjectId(collection_id), "collection_items": {"$elemMatch": {"item_id": int(item_id)}}}, {"$set": {"collection_items.$.collection_item_name":updated_text}})
+    mongo.db[username].update({"_id":ObjectId(collection_id), "collection_items": {"$elemMatch": {"item_id": int(item_id)}}}, {"$set": {"collection_items.$.description":updated_description}})
     mongo.db[username].update({"_id":ObjectId(collection_id), "collection_items": {"$elemMatch": {"item_id": int(item_id)}}}, {"$set": {"collection_items.$.item_bullet":updated_bullet}})
+    mongo.db[username].update({"_id":ObjectId(collection_id), "collection_items": {"$elemMatch": {"item_id": int(item_id)}}}, {"$set": {"collection_items.$.due_date":updated_due_date}})
+    mongo.db[username].update({"_id":ObjectId(collection_id), "collection_items": {"$elemMatch": {"item_id": int(item_id)}}}, {"$set": {"collection_items.$.future_log":updated_future_log}})
     collection_items = load_collection_items_from_mongo(username, collection_id)
     return render_template("collection_items.html", username=username, collection_name=collection_name, collection_items=collection_items, collection_id=collection_id)
+
+@app.route("/<username>/collection_item_done/<collection_name>/<collection_id>/<item_id>", methods=['POST'])
+def collection_item_done(username, collection_name, collection_id, item_id):
+    mongo.db[username].update({"_id":ObjectId(collection_id), "collection_items": {"$elemMatch": {"item_id": int(item_id)}}}, {"$set": {"collection_items.$.status":"58"}})
+    
+    user_collections = load_collections_by_username(username)
+    user_collections = list(user_collections)
+    return render_template('future_log.html', username=username, user_collections=user_collections) 
+
+@app.route("/<username>/collection_item_push/<collection_name>/<collection_id>/<item_id>", methods=['POST'])
+def collection_item_push(username, collection_name, collection_id, item_id):
+    
+    updated_month = request.form['month']
+    print(updated_month)
+    print(item_id)
+    mongo.db[username].update({"_id":ObjectId(collection_id), "collection_items": {"$elemMatch": {"item_id": int(item_id)}}}, {"$set": {"collection_items.$.future_log":updated_month}})
+    
+    user_collections = load_collections_by_username(username)
+    user_collections = list(user_collections)
+    return render_template('future_log.html', username=username, user_collections=user_collections) 
+
+
 
 @app.route("/<username>/delete_collection_item/<collection_name>/<collection_id>/<item_id>", methods=['POST'])
 def delete_collection_item_name(username, collection_name, collection_id, item_id):

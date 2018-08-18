@@ -17,7 +17,7 @@
                     {% for i in collection.collection_items %} {% if i.item_id|string() == item_id|string() %}
                     <form action="/{{username}}/update_collection_item/{{collection_name}}/{{collection_id}}/{{i.item_id}}" method="POST">
                         <input name="{{i.item_id}}" type="text" value="{{i.collection_item_name}}">
-
+                        <input type="text" name="collection_item_description"  value="{{i.description}}" />
                         <select name="item_bullet" class="selectpicker form-control">
                                 <option value="23fa" type="text">&#x23fa; : To Do</option>
                                   <option value="58" type="text">&#x58; : Done</option>
@@ -26,9 +26,27 @@
                                     <option value="ff0d" type="text">&#xff0d; : Note</option>
                                     <option value="1f7b7" type="text">&#x1f7b7; : Important</option>
                                 </select>
-                        <input class="btn waves-effect waves-light" type="submit" value="Update" />
+                       
+                      
+                     <select name="future_log" class="selectpicker form-control">
+                                <option value="not set" type="text">Set Later</option>
+                                  <option value="July" type="text">July</option>
+                                    <option value="August" type="text">August</option>
+                                    <option value="September" type="text">September</option>
+                                    <option value="October" type="text">October</option>
+                                    <option value="November" type="text">November</option>
+                                    <option value="December" type="text">December</option>
+                                </select>
+                                
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">today</i>
+                            <input id="due_date" name="due_date" type="text" class="datepicker">
+                            <label for="icon_prefix">Due Date</label>
+                        </div>
+                        
+                     <input class="btn waves-effect waves-light" type="submit" value="Update" />
                     </form>
-
+                    
                     {% endif %} {% endfor %}
 
                 </div>

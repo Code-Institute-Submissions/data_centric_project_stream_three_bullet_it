@@ -81,8 +81,18 @@
                         <ul>
                             {% for collections in user_collections %}
                             {% for collection_items in collections.collection_items %} {% if collection_items.future_log == 'July' %}
-                            <li>&#x{{collection_items.item_bullet}}; {{collection_items.description}}</li>
-                            {% endif%} {% endfor %}{% endfor %}
+                            <li>&#x{{collection_items.item_bullet}}; {{collection_items.description}} &#x{{collection_items.status}}; 
+                                <form class="secondary-content" action="/{{username}}/collection_item_done/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
+                                    <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
+                                    <button class="btn waves-effect waves-light" type="submit" />Done</button>
+                                </form>
+                                <form class="secondary-content" action="/{{username}}/collection_item_push/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
+                                    <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
+                                    <input name="month" type="hidden" value="August">
+                                    <button class="btn waves-effect waves-light" type="submit" />Push</button>
+                                </form>
+                                </li>
+                                                                                                {% endif%} {% endfor %}{% endfor %}
                         </ul>
                     </div>
                      {% else %}
