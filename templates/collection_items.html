@@ -41,8 +41,11 @@
      
       <div class="task_header col s7">
            
-        <h6>&#x{{item.item_bullet}}; {{item.collection_item_name}} </h6>
-      </div>
+        <h6>{% if item.item_bullet == "todo" %}&#x23fa;{% endif %} 
+            {% if item.item_bullet == "note" %}&#xff0d;{% endif %} 
+            {% if item.item_bullet == "event" %}&#x2b58;{% endif %} 
+            {{item.collection_item_name}} </h6>
+              </div>
        <div class="col s5">
        <i class="material-icons">expand_more</i>
         <form class="secondary-content" action="/{{username}}/edit_collection_item/{{collection_name}}/{{collection_id}}/{{item.item_id}}">
@@ -59,6 +62,9 @@
           <li> Details: {{item.description}}</li>
           <li> Future Log: {{item.future_log}}</li>
           <li> Due Date: {{item.due_date}}</li>
+          {% if item.importance is not none %}
+          <li> Importance: <span class="status"> &#x1f7b7; </span>Yes </li>
+          {% endif %}
       </ul>
            
     </div>

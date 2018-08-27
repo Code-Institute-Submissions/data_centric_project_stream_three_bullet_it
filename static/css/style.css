@@ -116,6 +116,14 @@ nav {
   background-color: black;
 }
 
+.fut_btn {
+    padding: 0 0.8rem;
+}
+
+.card-content ul li {
+    line-height: 2.8rem;
+}
+
  #add-collection-button {
   padding-top: 2em;
 }
@@ -178,4 +186,9 @@ nav {
 #months input:checked + span {
     background-color:#404040;
     color:#F7F7F7;
+}
+
+.status {
+    color: red;
+    font-weight: bold;
 }

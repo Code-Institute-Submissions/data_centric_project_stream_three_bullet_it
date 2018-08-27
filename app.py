@@ -77,13 +77,15 @@ def add_item_to_collection(username, collection_name, collection_id):
     item_bullet = request.form['bullet']
     future_log = request.form['future_log']
     due_date = request.form['due_date']
+    importance = request.form.get('checkbox_id')
+
     max_id = get_max_id(username, collection_name, collection_id)
     try: 
         int(max_id)
         new_id = max_id
     except ValueError:
         new_id = 1
-    collection_item_details = {"collection_item_name": collection_item, "description": description, "item_id": new_id, "item_bullet": item_bullet, "future_log":future_log, "due_date":due_date }
+    collection_item_details = {"collection_item_name": collection_item, "description": description, "item_id": new_id, "item_bullet": item_bullet, "future_log":future_log, "due_date":due_date, "importance":importance }
     save_collection_items_to_mongo(username, collection_name, collection_id, collection_item_details)
     return redirect(username + "/" + collection_name + "/" + collection_id)
     
@@ -96,23 +98,23 @@ def edit_collection_item_name(username, collection_name, collection_id, item_id)
 @app.route("/<username>/update_collection_item/<collection_name>/<collection_id>/<item_id>", methods=['POST'])
 def update_collection_item_name(username, collection_name, collection_id, item_id):
     updated_text = request.form[item_id]
-    print(updated_text)
     updated_description = request.form['collection_item_description']
     updated_bullet = request.form['item_bullet']
     updated_due_date = request.form['due_date']
-    print(updated_bullet)
     updated_future_log = request.form['future_log']
+    updated_importance = request.form.get('checkbox_id')
     mongo.db[username].update({"_id":ObjectId(collection_id), "collection_items": {"$elemMatch": {"item_id": int(item_id)}}}, {"$set": {"collection_items.$.collection_item_name":updated_text}})
     mongo.db[username].update({"_id":ObjectId(collection_id), "collection_items": {"$elemMatch": {"item_id": int(item_id)}}}, {"$set": {"collection_items.$.description":updated_description}})
     mongo.db[username].update({"_id":ObjectId(collection_id), "collection_items": {"$elemMatch": {"item_id": int(item_id)}}}, {"$set": {"collection_items.$.item_bullet":updated_bullet}})
     mongo.db[username].update({"_id":ObjectId(collection_id), "collection_items": {"$elemMatch": {"item_id": int(item_id)}}}, {"$set": {"collection_items.$.due_date":updated_due_date}})
     mongo.db[username].update({"_id":ObjectId(collection_id), "collection_items": {"$elemMatch": {"item_id": int(item_id)}}}, {"$set": {"collection_items.$.future_log":updated_future_log}})
+    mongo.db[username].update({"_id":ObjectId(collection_id), "collection_items": {"$elemMatch": {"item_id": int(item_id)}}}, {"$set": {"collection_items.$.importance":updated_importance}})
     collection_items = load_collection_items_from_mongo(username, collection_id)
     return render_template("collection_items.html", username=username, collection_name=collection_name, collection_items=collection_items, collection_id=collection_id)
 
 @app.route("/<username>/collection_item_done/<collection_name>/<collection_id>/<item_id>", methods=['POST'])
 def collection_item_done(username, collection_name, collection_id, item_id):
-    mongo.db[username].update({"_id":ObjectId(collection_id), "collection_items": {"$elemMatch": {"item_id": int(item_id)}}}, {"$set": {"collection_items.$.status":"58"}})
+    mongo.db[username].update({"_id":ObjectId(collection_id), "collection_items": {"$elemMatch": {"item_id": int(item_id)}}}, {"$set": {"collection_items.$.status":"&#x58;"}})
     
     user_collections = load_collections_by_username(username)
     user_collections = list(user_collections)

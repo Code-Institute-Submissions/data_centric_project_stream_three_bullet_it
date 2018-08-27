@@ -18,32 +18,38 @@
                     <form action="/{{username}}/update_collection_item/{{collection_name}}/{{collection_id}}/{{i.item_id}}" method="POST">
                         <input name="{{i.item_id}}" type="text" value="{{i.collection_item_name}}">
                         <input type="text" name="collection_item_description"  value="{{i.description}}" />
-                        <select name="item_bullet" class="selectpicker form-control">
-                                <option value="23fa" type="text">&#x23fa; : To Do</option>
-                                  <option value="58" type="text">&#x58; : Done</option>
-                                    <option value="25b6" type="text">&#x25b6; : Migrate</option>
-                                    <option value="2b58" type="text">&#x2b58; : Event</option>
-                                    <option value="ff0d" type="text">&#xff0d; : Note</option>
-                                    <option value="1f7b7" type="text">&#x1f7b7; : Important</option>
+                        <select name="item_bullet" class="selectpicker form-control" >
+                                <option value="todo" type="text" {% if i.item_bullet == "todo" %}selected="selected"{% endif %}
+>&#x23fa; : To Do</option>
+                                <option value="event" type="text" {% if i.item_bullet == "event" %}selected="selected"{% endif %}>&#x2b58; : Event</option>
+                                <option value="note" type="text" {% if i.item_bullet == "note" %}selected="selected"{% endif %}>&#xff0d; : Note</option>
                                 </select>
                        
                       
                      <select name="future_log" class="selectpicker form-control">
                                 <option value="not set" type="text">Set Later</option>
-                                  <option value="July" type="text">July</option>
-                                    <option value="August" type="text">August</option>
-                                    <option value="September" type="text">September</option>
-                                    <option value="October" type="text">October</option>
-                                    <option value="November" type="text">November</option>
-                                    <option value="December" type="text">December</option>
+                                  <option value="July" type="text" {% if i.future_log == "July" %} selected="selected"{% endif %}>July</option>
+                                    <option value="August" type="text" {% if i.future_log == "August" %} selected="selected"{% endif %}>August</option>
+                                    <option value="September" type="text" {% if i.future_log == "September" %} selected="selected"{% endif %}>September</option>
+                                    <option value="October" type="text" {% if i.future_log == "October" %} selected="selected"{% endif %}>October</option>
+                                    <option value="November" type="text" {% if i.future_log == "November" %} selected="selected"{% endif %}>November</option>
+                                    <option value="December" type="text" {% if i.future_log == "December" %} selected="selected"{% endif %}>December</option>
                                 </select>
                                 
                         <div class="input-field col s12">
                             <i class="material-icons prefix">today</i>
-                            <input id="due_date" name="due_date" type="text" class="datepicker">
+                            <input id="due_date" name="due_date" type="text" class="datepicker" value="{{i.due_date}}">
                             <label for="icon_prefix">Due Date</label>
                         </div>
                         
+                        <div class="s12">
+                            {% if i.importance=="important" %}
+                         <input type="checkbox" name="checkbox_id" id="checkbox_id" checked>
+                         {% else %}
+                         <input type="checkbox" name="checkbox_id" id="checkbox_id" >
+                         {% endif %}
+                            <label for="checkbox_id">&#x1f7b7;: Important</label>
+                        </div>
                      <input class="btn waves-effect waves-light" type="submit" value="Update" />
                     </form>
                     
