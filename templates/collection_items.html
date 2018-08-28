@@ -27,62 +27,66 @@
     </div>
 
 
-   
 
 
 
-<div class="row">
-<ul class="collapsible" data-collapsible="accordion">
-  {% if collection_items %} 
-  {% for i in collection_items %} 
-  {% for item in i.collection_items %}
-  <li>
-    <div class="collapsible-header">
-     
-      <div class="task_header col s7">
-           
-        <h6>{% if item.item_bullet == "todo" %}&#x26AB;{% endif %} 
-            {% if item.item_bullet == "note" %}&#xff0d;{% endif %} 
-            {% if item.item_bullet == "event" %}&#x26AA;{% endif %} 
-            {{item.collection_item_name}} </h6>
-              </div>
-       <div class="col s5">
-       <i class="material-icons">expand_more</i>
-        <form class="secondary-content" action="/{{username}}/edit_collection_item/{{collection_name}}/{{collection_id}}/{{item.item_id}}">
-                <button class="btn waves-effect waves-light" type="submit" /><i class="material-icons">edit</i></button>
-            </form>
-         <form class="secondary-content" action="/{{username}}/delete_collection_item/{{collection_name}}/{{collection_id}}/{{item.item_id}}" method="POST">
-                <input name="{{item.item_id}}" type="hidden" value="{{item.item_id}}">
-                <button class="btn waves-effect waves-light" type="submit" /><i class="material-icons">delete_forever</i></button>
-            </form>
-      </div>
+
+    <div class="row">
+        <ul class="collapsible" data-collapsible="accordion">
+            {% if collection_items %} {% for i in collection_items %} {% for item in i.collection_items %}
+            <li>
+                <div class="collapsible-header">
+
+                    <div class="task_header col s7">
+
+                        <h6>{% if item.item_bullet == "todo" %}<i class="fas fa-circle"></i>{% endif %} {% if item.item_bullet == "note" %}&#xff0d;{% endif %} {% if item.item_bullet == "event" %}<i class="far fa-circle"></i>{% endif %} {{item.collection_item_name}}
+                            </h6>
+                    </div>
+                    <div class="col s5">
+                        <i class="material-icons">expand_more</i>
+                        <div class="row">
+                            <div class="col s12">
+                                <form class="right-align" action="/{{username}}/edit_collection_item/{{collection_name}}/{{collection_id}}/{{item.item_id}}">
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" /><i class="material-icons">edit</i></button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <form class="right-align" action="/{{username}}/delete_collection_item/{{collection_name}}/{{collection_id}}/{{item.item_id}}" method="POST">
+                                    <input name="{{item.item_id}}" type="hidden" value="{{item.item_id}}">
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" /><i class="material-icons">delete_forever</i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapsible-body">
+                    <ul>
+                        <li> Details: {{item.description}}</li>
+                        <li> Future Log: {{item.future_log}}</li>
+                        <li> Due Date: {{item.due_date}}</li>
+                        {% if item.importance is not none %}
+                        <li> Importance: <span class="status"><i class="fas fa-asterisk"></i> </span>Yes </li>
+                        {% endif %}
+                    </ul>
+
+                </div>
+            </li>
+            {% endfor %} {% endfor %} {% else %}
+            <p>You have no items!</p>
+            {% endif %}
+        </ul>
     </div>
-    <div class="collapsible-body">
-      <ul>
-          <li> Details: {{item.description}}</li>
-          <li> Future Log: {{item.future_log}}</li>
-          <li> Due Date: {{item.due_date}}</li>
-          {% if item.importance is not none %}
-          <li> Importance: <span class="status"><i class="fas fa-asterisk"></i> </span>Yes </li>
-          {% endif %}
-      </ul>
-           
-    </div>
-  </li>
-   {% endfor %} {% endfor %} {% else %}
-        <p>You have no items!</p>
-        {% endif %}
-</ul>
-</div>
 </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col s12">
-                <a class="btn waves-effect waves-light" href="/{{username}}/get_collections"><i class="material-icons">arrow_back</i></a>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <a class="btn waves-effect waves-light" href="/{{username}}/get_collections"><i class="material-icons">arrow_back</i></a>
         </div>
     </div>
+</div>
 
 
 {% endblock %}

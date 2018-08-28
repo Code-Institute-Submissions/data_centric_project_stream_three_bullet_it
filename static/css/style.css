@@ -133,6 +133,10 @@ color: #af7ac5;
     background-color:#AF7AC5;
 }
 
+.waves-light {
+   background-color:#AF7AC5;  
+}
+
 .btn:hover {
   background-color: black;
 }

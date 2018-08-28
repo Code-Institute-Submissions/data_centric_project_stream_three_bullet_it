@@ -57,15 +57,24 @@
                         <input type="checkbox" name="checkbox_id" id="checkbox_id" value="important">
                             <label for="checkbox_id"><i class="fas fa-asterisk"></i>: Important</label>
                             
-                        <div class="col s12" id="add-collection-item-button">
-                            <button class="btn waves-effect waves-light" type="submit" /><i class="material-icons">add</i></button>
+                        
+                        <div class="col s12 center-align" id="add-collection-item-button">
+                            <button class="btn waves-effect waves-light" type="submit" value="ADD"/>ADD</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
+<div class="container">
+            <div class="row">
+                <div class="col s12 center-align">
+                    <a class="btn waves-effect waves-light" href="{{ url_for('view_collection_by_user', username=username, collection_name=collection_name, collection_id=collection_id) }}">
+                Cancel
+            </a>
+                </div>
+            </div>
+        </div>
 </div>
 </div>
 {% endblock %}

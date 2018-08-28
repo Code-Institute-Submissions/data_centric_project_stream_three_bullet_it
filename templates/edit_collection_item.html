@@ -19,8 +19,7 @@
                         <input name="{{i.item_id}}" type="text" value="{{i.collection_item_name}}">
                         <input type="text" name="collection_item_description"  value="{{i.description}}" />
                         <select name="item_bullet" class="selectpicker form-control" >
-                                <option value="todo" type="text" {% if i.item_bullet == "todo" %}selected="selected"{% endif %}
->&#x26AB; : To Do</option>
+                                <option value="todo" type="text" {% if i.item_bullet == "todo" %}selected="selected"{% endif %}>&#x26AB; : To Do</option>
                                 <option value="event" type="text" {% if i.item_bullet == "event" %}selected="selected"{% endif %}>&#x26AA; : Event</option>
                                 <option value="note" type="text" {% if i.item_bullet == "note" %}selected="selected"{% endif %}>&#xff0d; : Note</option>
                                 </select>
@@ -47,8 +46,8 @@
                             <input id="due_date" name="due_date" type="text" class="datepicker" value="{{i.due_date}}">
                             <label for="icon_prefix">Due Date</label>
                         </div>
-                        
-                        <div class="s12">
+                        <div class="row">
+                        <div class="col s12">
                             {% if i.importance=="important" %}
                          <input type="checkbox" name="checkbox_id" id="checkbox_id" value="important" checked>
                          {% else %}
@@ -56,7 +55,12 @@
                          {% endif %}
                             <label for="checkbox_id"><i class="fas fa-asterisk"></i>: Important</label>
                         </div>
+                        </div>
+                        <div class="row">
+                        <div class="col s12 center-align">
                      <input class="btn waves-effect waves-light" type="submit" value="Update" />
+                     </div>
+                     </div>
                     </form>
                     
                     {% endif %} {% endfor %}
@@ -68,7 +72,7 @@
 
         <div class="container">
             <div class="row">
-                <div class="col s12">
+                <div class="col s12 center-align">
                     <a class="btn waves-effect waves-light" href="{{ url_for('view_collection_by_user', username=username, collection_name=collection_name, collection_id=collection_id) }}">
                 Cancel
             </a>
@@ -78,5 +82,5 @@
     </div>
 
 </div>
-</div>
+
 {% endblock %}
