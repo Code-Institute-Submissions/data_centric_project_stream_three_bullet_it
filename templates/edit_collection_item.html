@@ -20,8 +20,8 @@
                         <input type="text" name="collection_item_description"  value="{{i.description}}" />
                         <select name="item_bullet" class="selectpicker form-control" >
                                 <option value="todo" type="text" {% if i.item_bullet == "todo" %}selected="selected"{% endif %}
->&#x23fa; : To Do</option>
-                                <option value="event" type="text" {% if i.item_bullet == "event" %}selected="selected"{% endif %}>&#x2b58; : Event</option>
+>&#x26AB; : To Do</option>
+                                <option value="event" type="text" {% if i.item_bullet == "event" %}selected="selected"{% endif %}>&#x26AA; : Event</option>
                                 <option value="note" type="text" {% if i.item_bullet == "note" %}selected="selected"{% endif %}>&#xff0d; : Note</option>
                                 </select>
                        
@@ -48,7 +48,7 @@
                          {% else %}
                          <input type="checkbox" name="checkbox_id" id="checkbox_id" >
                          {% endif %}
-                            <label for="checkbox_id">&#x1f7b7;: Important</label>
+                            <label for="checkbox_id">&#x26B9;: Important</label>
                         </div>
                      <input class="btn waves-effect waves-light" type="submit" value="Update" />
                     </form>

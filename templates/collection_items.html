@@ -41,9 +41,9 @@
      
       <div class="task_header col s7">
            
-        <h6>{% if item.item_bullet == "todo" %}&#x23fa;{% endif %} 
+        <h6>{% if item.item_bullet == "todo" %}&#x26AB;{% endif %} 
             {% if item.item_bullet == "note" %}&#xff0d;{% endif %} 
-            {% if item.item_bullet == "event" %}&#x2b58;{% endif %} 
+            {% if item.item_bullet == "event" %}&#x26AA;{% endif %} 
             {{item.collection_item_name}} </h6>
               </div>
        <div class="col s5">
@@ -63,7 +63,7 @@
           <li> Future Log: {{item.future_log}}</li>
           <li> Due Date: {{item.due_date}}</li>
           {% if item.importance is not none %}
-          <li> Importance: <span class="status"> &#x1f7b7; </span>Yes </li>
+          <li> Importance: <span class="status"> &#x26B9; </span>Yes </li>
           {% endif %}
       </ul>
            
