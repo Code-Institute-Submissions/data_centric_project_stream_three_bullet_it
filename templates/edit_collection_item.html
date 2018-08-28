@@ -20,14 +20,20 @@
                         <input type="text" name="collection_item_description"  value="{{i.description}}" />
                         <select name="item_bullet" class="selectpicker form-control" >
                                 <option value="todo" type="text" {% if i.item_bullet == "todo" %}selected="selected"{% endif %}
-><i class="fas fa-circle"></i> : To Do</option>
-                                <option value="event" type="text" {% if i.item_bullet == "event" %}selected="selected"{% endif %}><i class="far fa-circle"></i> : Event</option>
+>&#x26AB; : To Do</option>
+                                <option value="event" type="text" {% if i.item_bullet == "event" %}selected="selected"{% endif %}>&#x26AA; : Event</option>
                                 <option value="note" type="text" {% if i.item_bullet == "note" %}selected="selected"{% endif %}>&#xff0d; : Note</option>
                                 </select>
                        
                       
                      <select name="future_log" class="selectpicker form-control">
                                 <option value="not set" type="text">Set Later</option>
+                                 <option value="January" type="text" {% if i.future_log == "January" %} selected="selected"{% endif %}>January</option>
+                                  <option value="February" type="text" {% if i.future_log == "February" %} selected="selected"{% endif %}>February</option>
+                                   <option value="March" type="text" {% if i.future_log == "March" %} selected="selected"{% endif %}>March</option>
+                                    <option value="April" type="text" {% if i.future_log == "April" %} selected="selected"{% endif %}>April</option>
+                                     <option value="May" type="text" {% if i.future_log == "May" %} selected="selected"{% endif %}>May</option>
+                                      <option value="June" type="text" {% if i.future_log == "June" %} selected="selected"{% endif %}>June</option>
                                   <option value="July" type="text" {% if i.future_log == "July" %} selected="selected"{% endif %}>July</option>
                                     <option value="August" type="text" {% if i.future_log == "August" %} selected="selected"{% endif %}>August</option>
                                     <option value="September" type="text" {% if i.future_log == "September" %} selected="selected"{% endif %}>September</option>
@@ -44,11 +50,11 @@
                         
                         <div class="s12">
                             {% if i.importance=="important" %}
-                         <input type="checkbox" name="checkbox_id" id="checkbox_id" checked>
+                         <input type="checkbox" name="checkbox_id" id="checkbox_id" value="important" checked>
                          {% else %}
-                         <input type="checkbox" name="checkbox_id" id="checkbox_id" >
+                         <input type="checkbox" name="checkbox_id" id="checkbox_id" value="important" >
                          {% endif %}
-                            <label for="checkbox_id"><i class="fas fa-asterisk">: Important</label>
+                            <label for="checkbox_id"><i class="fas fa-asterisk"></i>: Important</label>
                         </div>
                      <input class="btn waves-effect waves-light" type="submit" value="Update" />
                     </form>

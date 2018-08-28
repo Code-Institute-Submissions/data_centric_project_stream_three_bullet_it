@@ -19,21 +19,6 @@
 
                 <h4 class="center-align">Unassigned Items</h4>
 
-                <!--           {% if user_collections %} {% for collections in user_collections %}
-                    <div>
-                        <a href="/{{username}}/{{collections.name}}"><i class="fas fa-plus-circle"></i>  {{collections.name}}</a>
-                        <ul class="future_log_unassigned">
-                            {% for collection_items in collections.collection_items %} {% if collection_items.future_log == 'not set' %}
-
-                            <li tabindex="-1">{{collection_items.description}}</li>
-                            {% endif%} {% endfor %}
-                        </ul>
-                    </div>
-                    {% endfor %} {% else %}
-                    <p>You have no lists!</p>
-                    {% endif %}
-            -->
-
                 <form action="/{{username}}/add_future_log" method="POST">
                     <div class="row">
                         <div class="col s6">
@@ -48,6 +33,12 @@
                         <div class="col s6">
                             <div class="radio_buttons">
                                 <div id="months">
+                                    <label><input type="radio" name="month" value="July"><span>January</span></label>
+                                    <label><input type="radio" name="month" value="July"><span>February</span></label>
+                                    <label><input type="radio" name="month" value="July"><span>March</span></label>
+                                    <label><input type="radio" name="month" value="July"><span>April</span></label>
+                                    <label><input type="radio" name="month" value="July"><span>May</span></label>
+                                    <label><input type="radio" name="month" value="July"><span>June</span></label>
                                     <label><input type="radio" name="month" value="July"><span>July</span></label>
                                     <label><input type="radio" name="month" value="August"><span>August</span></label>
                                     <label><input type="radio" name="month" value="September"><span>September</span></label>
@@ -73,6 +64,238 @@
 
         <div class="col s12 calendar">
             <div class="col s12 calendar_row">
+                <div class="col s12 calendar_row">
+                <div class="col s12 m12 l6 calendar_month card z-depth-5">
+
+                    <h3 class="card-title">January</h3>
+                    {% if user_collections %} 
+                    <div class="card-content">
+                        <ul>
+                            {% for collections in user_collections %}
+                            {% for collection_items in collections.collection_items %} {% if collection_items.future_log == 'January' %}
+                            <li> 
+                            {% if collection_items.status == "done" %} <strike> &#x58; {% endif %}
+                            {% if collection_items.importance == "important" %}<span class="status"> <i class="fas fa-asterisk"></i> </span> {% endif %}
+                            {% if collection_items.item_bullet == "todo" %}<i class="fas fa-circle"></i>{% endif %}
+                            {% if collection_items.item_bullet == "note" %}&#xff0d;{% endif %}
+                            {% if collection_items.item_bullet == "event" %}<i class="far fa-circle"></i>{% endif %}
+                            
+                             <a href="/{{username}}/edit_collection_item/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" title="Edit Item" class="collection-item"> {{collection_items.collection_item_name}} </a>
+                            {% if collection_items.due_date %}  {% endif %}
+                           
+                            {% if collection_items.status == "done" %} </strike> {% endif %}
+                            
+                                        
+                                <form class="secondary-content" action="/{{username}}/collection_item_done/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
+                                    <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done"/>&#x58;</button>
+                                </form>
+                                <form class="secondary-content" action="/{{username}}/collection_item_push/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
+                                    <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
+                                    <input name="month" type="hidden" value="February">
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month"/>&#x2794;</button>
+                                </form>
+                                </li>
+                                                                                                {% endif%} {% endfor %}{% endfor %}
+                        </ul>
+                    </div>
+                     {% else %}
+                    <p>You have no lists!</p>
+                    {% endif %}
+
+                </div>
+                <div class="col s12 m12 l6 calendar_month card z-depth-5">
+                    <h3 class="card-title">February</h3>
+                    {% if user_collections %} 
+                    <div class="card-content">
+                        <ul>
+                            {% for collections in user_collections %}
+                            {% for collection_items in collections.collection_items %} {% if collection_items.future_log == 'February' %}
+                            <li> 
+                            {% if collection_items.status == "done" %} <strike> &#x58; {% endif %}
+                            {% if collection_items.importance == "important" %}<span class="status"> <i class="fas fa-asterisk"></i> </span> {% endif %}
+                            {% if collection_items.item_bullet == "todo" %}<i class="fas fa-circle"></i>{% endif %}
+                            {% if collection_items.item_bullet == "note" %}&#xff0d;{% endif %}
+                            {% if collection_items.item_bullet == "event" %}<i class="far fa-circle"></i>{% endif %}
+                            
+                             <a href="/{{username}}/edit_collection_item/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" title="Edit Item" class="collection-item"> {{collection_items.collection_item_name}} </a>
+                            {% if collection_items.due_date %}  {% endif %}
+                           
+                            {% if collection_items.status == "done" %} </strike> {% endif %}
+                            
+                                        
+                                <form class="secondary-content" action="/{{username}}/collection_item_done/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
+                                    <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done"/>&#x58;</button>
+                                </form>
+                                <form class="secondary-content" action="/{{username}}/collection_item_push/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
+                                    <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
+                                    <input name="month" type="hidden" value="March">
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month"/>&#x2794;</button>
+                                </form>
+                                </li>
+                                                                                                {% endif%} {% endfor %}{% endfor %}
+                        </ul>
+                    </div>
+                   {% else %}
+                    <p>You have no lists!</p>
+                    {% endif %}
+                </div>
+            </div>
+                <div class="col s12 m12 l6 calendar_month card z-depth-5">
+                    <h3 class="card-title">March</h3>
+                    {% if user_collections %} 
+                    <div class="card-content">
+                        <ul>
+                            {% for collections in user_collections %}
+                            {% for collection_items in collections.collection_items %} {% if collection_items.future_log == 'March' %}
+                            <li> 
+                            {% if collection_items.status == "done" %} <strike> &#x58; {% endif %}
+                            {% if collection_items.importance == "important" %}<span class="status"> <i class="fas fa-asterisk"></i> </span> {% endif %}
+                            {% if collection_items.item_bullet == "todo" %}<i class="fas fa-circle"></i>{% endif %}
+                            {% if collection_items.item_bullet == "note" %}&#xff0d;{% endif %}
+                            {% if collection_items.item_bullet == "event" %}<i class="far fa-circle"></i>{% endif %}
+                            
+                             <a href="/{{username}}/edit_collection_item/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" title="Edit Item" class="collection-item"> {{collection_items.collection_item_name}} </a>
+                            {% if collection_items.due_date %}  {% endif %}
+                           
+                            {% if collection_items.status == "done" %} </strike> {% endif %}
+                            
+                                        
+                                <form class="secondary-content" action="/{{username}}/collection_item_done/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
+                                    <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done"/>&#x58;</button>
+                                </form>
+                                <form class="secondary-content" action="/{{username}}/collection_item_push/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
+                                    <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
+                                    <input name="month" type="hidden" value="April">
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month"/>&#x2794;</button>
+                                </form>
+                                </li>
+                                                                                                {% endif%} {% endfor %}{% endfor %}
+                        </ul>
+                    </div>
+                     {% else %}
+                    <p>You have no lists!</p>
+                    {% endif %}
+
+                </div>
+                <div class="col s12 m12 l6 calendar_month card z-depth-5">
+                    <h3 class="card-title">April</h3>
+                    {% if user_collections %} 
+                    <div class="card-content">
+                        <ul>
+                            {% for collections in user_collections %}
+                            {% for collection_items in collections.collection_items %} {% if collection_items.future_log == 'April' %}
+                            <li> 
+                            {% if collection_items.status == "done" %} <strike> &#x58; {% endif %}
+                            {% if collection_items.importance == "important" %}<span class="status"> <i class="fas fa-asterisk"></i> </span> {% endif %}
+                            {% if collection_items.item_bullet == "todo" %}<i class="fas fa-circle"></i>{% endif %}
+                            {% if collection_items.item_bullet == "note" %}&#xff0d;{% endif %}
+                            {% if collection_items.item_bullet == "event" %}<i class="far fa-circle"></i>{% endif %}
+                            
+                             <a href="/{{username}}/edit_collection_item/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" title="Edit Item" class="collection-item"> {{collection_items.collection_item_name}} </a>
+                            {% if collection_items.due_date %}  {% endif %}
+                           
+                            {% if collection_items.status == "done" %} </strike> {% endif %}
+                            
+                                        
+                                <form class="secondary-content" action="/{{username}}/collection_item_done/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
+                                    <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done"/>&#x58;</button>
+                                </form>
+                                <form class="secondary-content" action="/{{username}}/collection_item_push/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
+                                    <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
+                                    <input name="month" type="hidden" value="May">
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month"/>&#x2794;</button>
+                                </form>
+                                </li>
+                                                                                                {% endif%} {% endfor %}{% endfor %}
+                        </ul>
+                    </div>
+                   {% else %}
+                    <p>You have no lists!</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col s12 calendar_row">
+                <div class="col s12 m12 l6 calendar_month card z-depth-5">
+                    <h3 class="card-title">May</h3>
+                    {% if user_collections %} 
+                    <div class="card-content">
+                        <ul>
+                            {% for collections in user_collections %}
+                            {% for collection_items in collections.collection_items %} {% if collection_items.future_log == 'May' %}
+                            <li> 
+                            {% if collection_items.status == "done" %} <strike> &#x58; {% endif %}
+                            {% if collection_items.importance == "important" %}<span class="status"> <i class="fas fa-asterisk"></i> </span> {% endif %}
+                            {% if collection_items.item_bullet == "todo" %}<i class="fas fa-circle"></i>{% endif %}
+                            {% if collection_items.item_bullet == "note" %}&#xff0d;{% endif %}
+                            {% if collection_items.item_bullet == "event" %}<i class="far fa-circle"></i>{% endif %}
+                            
+                             <a href="/{{username}}/edit_collection_item/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" title="Edit Item" class="collection-item"> {{collection_items.collection_item_name}} </a>
+                            {% if collection_items.due_date %}  {% endif %}
+                           
+                            {% if collection_items.status == "done" %} </strike> {% endif %}
+                            
+                                        
+                                <form class="secondary-content" action="/{{username}}/collection_item_done/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
+                                    <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done"/>&#x58;</button>
+                                </form>
+                                <form class="secondary-content" action="/{{username}}/collection_item_push/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
+                                    <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
+                                    <input name="month" type="hidden" value="June">
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month"/>&#x2794;</button>
+                                </form>
+                                </li>
+                                                                                                {% endif%} {% endfor %}{% endfor %}
+                        </ul>
+                    </div>
+                     {% else %}
+                    <p>You have no lists!</p>
+                    {% endif %}
+
+                </div>
+                <div class="col s12 m12 l6 calendar_month card z-depth-5">
+                    <h3 class="card-title">June</h3>
+                    {% if user_collections %} 
+                    <div class="card-content">
+                        <ul>
+                            {% for collections in user_collections %}
+                            {% for collection_items in collections.collection_items %} {% if collection_items.future_log == 'June' %}
+                            <li> 
+                            {% if collection_items.status == "done" %} <strike> &#x58; {% endif %}
+                            {% if collection_items.importance == "important" %}<span class="status"> <i class="fas fa-asterisk"></i> </span> {% endif %}
+                            {% if collection_items.item_bullet == "todo" %}<i class="fas fa-circle"></i>{% endif %}
+                            {% if collection_items.item_bullet == "note" %}&#xff0d;{% endif %}
+                            {% if collection_items.item_bullet == "event" %}<i class="far fa-circle"></i>{% endif %}
+                            
+                             <a href="/{{username}}/edit_collection_item/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" title="Edit Item" class="collection-item"> {{collection_items.collection_item_name}} </a>
+                            {% if collection_items.due_date %}  {% endif %}
+                           
+                            {% if collection_items.status == "done" %} </strike> {% endif %}
+                            
+                                        
+                                <form class="secondary-content" action="/{{username}}/collection_item_done/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
+                                    <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done"/>&#x58;</button>
+                                </form>
+                                <form class="secondary-content" action="/{{username}}/collection_item_push/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
+                                    <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
+                                    <input name="month" type="hidden" value="July">
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month"/>&#x2794;</button>
+                                </form>
+                                </li>
+                                                                                                {% endif%} {% endfor %}{% endfor %}
+                        </ul>
+                    </div>
+                   {% else %}
+                    <p>You have no lists!</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col s12 calendar_row">
                 <div class="col s12 m12 l6 calendar_month card z-depth-5">
 
                     <h3 class="card-title">July</h3>
@@ -83,12 +306,12 @@
                             {% for collection_items in collections.collection_items %} {% if collection_items.future_log == 'July' %}
                             <li> 
                             {% if collection_items.status == "done" %} <strike> &#x58; {% endif %}
-                            {% if collection_items.importance == "important" %}<span class="status"> <i class="fas fa-asterisk"> </span> {% endif %}
+                            {% if collection_items.importance == "important" %}<span class="status"> <i class="fas fa-asterisk"></i> </span> {% endif %}
                             {% if collection_items.item_bullet == "todo" %}<i class="fas fa-circle"></i>{% endif %}
                             {% if collection_items.item_bullet == "note" %}&#xff0d;{% endif %}
                             {% if collection_items.item_bullet == "event" %}<i class="far fa-circle"></i>{% endif %}
                             
-                             <a href="/{{username}}/edit_collection_item/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" title="Edit Item" class="collection-item"><i class="fas fa-plus-circle"></i> {{collection_items.collection_item_name}} </a>
+                             <a href="/{{username}}/edit_collection_item/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" title="Edit Item" class="collection-item"> {{collection_items.collection_item_name}} </a>
                             {% if collection_items.due_date %}  {% endif %}
                            
                             {% if collection_items.status == "done" %} </strike> {% endif %}
@@ -119,8 +342,30 @@
                         <ul>
                             {% for collections in user_collections %}
                             {% for collection_items in collections.collection_items %} {% if collection_items.future_log == 'August' %}
-                            <li>&#x{{collection_items.item_bullet}}; {{collection_items.collection_item_name}}</li>
-                            {% endif%} {% endfor %} {% endfor %} 
+                            <li> 
+                            {% if collection_items.status == "done" %} <strike> &#x58; {% endif %}
+                            {% if collection_items.importance == "important" %}<span class="status"> <i class="fas fa-asterisk"></i> </span> {% endif %}
+                            {% if collection_items.item_bullet == "todo" %}<i class="fas fa-circle"></i>{% endif %}
+                            {% if collection_items.item_bullet == "note" %}&#xff0d;{% endif %}
+                            {% if collection_items.item_bullet == "event" %}<i class="far fa-circle"></i>{% endif %}
+                            
+                             <a href="/{{username}}/edit_collection_item/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" title="Edit Item" class="collection-item"> {{collection_items.collection_item_name}} </a>
+                            {% if collection_items.due_date %}  {% endif %}
+                           
+                            {% if collection_items.status == "done" %} </strike> {% endif %}
+                            
+                                        
+                                <form class="secondary-content" action="/{{username}}/collection_item_done/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
+                                    <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done"/>&#x58;</button>
+                                </form>
+                                <form class="secondary-content" action="/{{username}}/collection_item_push/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
+                                    <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
+                                    <input name="month" type="hidden" value="September">
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month"/>&#x2794;</button>
+                                </form>
+                                </li>
+                                                                                                {% endif%} {% endfor %}{% endfor %}
                         </ul>
                     </div>
                    {% else %}
@@ -134,10 +379,32 @@
                     {% if user_collections %} 
                     <div class="card-content">
                          <ul>
-                             {% for collections in user_collections %}
+                            {% for collections in user_collections %}
                             {% for collection_items in collections.collection_items %} {% if collection_items.future_log == 'September' %}
-                            <li>&#x{{collection_items.item_bullet}}; {{collection_items.description}}</li>
-                            {% endif%} {% endfor %} {% endfor %}
+                            <li> 
+                            {% if collection_items.status == "done" %} <strike> &#x58; {% endif %}
+                            {% if collection_items.importance == "important" %}<span class="status"> <i class="fas fa-asterisk"></i> </span> {% endif %}
+                            {% if collection_items.item_bullet == "todo" %}<i class="fas fa-circle"></i>{% endif %}
+                            {% if collection_items.item_bullet == "note" %}&#xff0d;{% endif %}
+                            {% if collection_items.item_bullet == "event" %}<i class="far fa-circle"></i>{% endif %}
+                            
+                             <a href="/{{username}}/edit_collection_item/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" title="Edit Item" class="collection-item"> {{collection_items.collection_item_name}} </a>
+                            {% if collection_items.due_date %}  {% endif %}
+                           
+                            {% if collection_items.status == "done" %} </strike> {% endif %}
+                            
+                                        
+                                <form class="secondary-content" action="/{{username}}/collection_item_done/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
+                                    <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done"/>&#x58;</button>
+                                </form>
+                                <form class="secondary-content" action="/{{username}}/collection_item_push/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
+                                    <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
+                                    <input name="month" type="hidden" value="October">
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month"/>&#x2794;</button>
+                                </form>
+                                </li>
+                                                                                                {% endif%} {% endfor %}{% endfor %}
                         </ul>
                     </div>
                      {% else %}
@@ -149,9 +416,32 @@
                     {% if user_collections %} 
                     <div class="card-content">
                         <ul>
-                            {% for collections in user_collections %} {% for collection_items in collections.collection_items %} {% if collection_items.future_log == 'October' %}
-                            <li>&#x{{collection_items.item_bullet}}; {{collection_items.description}}</li>
-                             {% endif%} {% endfor %} {% endfor %}
+                            {% for collections in user_collections %}
+                            {% for collection_items in collections.collection_items %} {% if collection_items.future_log == 'October' %}
+                            <li> 
+                            {% if collection_items.status == "done" %} <strike> &#x58; {% endif %}
+                            {% if collection_items.importance == "important" %}<span class="status"> <i class="fas fa-asterisk"></i> </span> {% endif %}
+                            {% if collection_items.item_bullet == "todo" %}<i class="fas fa-circle"></i>{% endif %}
+                            {% if collection_items.item_bullet == "note" %}&#xff0d;{% endif %}
+                            {% if collection_items.item_bullet == "event" %}<i class="far fa-circle"></i>{% endif %}
+                            
+                             <a href="/{{username}}/edit_collection_item/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" title="Edit Item" class="collection-item"> {{collection_items.collection_item_name}} </a>
+                            {% if collection_items.due_date %}  {% endif %}
+                           
+                            {% if collection_items.status == "done" %} </strike> {% endif %}
+                            
+                                        
+                                <form class="secondary-content" action="/{{username}}/collection_item_done/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
+                                    <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done"/>&#x58;</button>
+                                </form>
+                                <form class="secondary-content" action="/{{username}}/collection_item_push/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
+                                    <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
+                                    <input name="month" type="hidden" value="November">
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month"/>&#x2794;</button>
+                                </form>
+                                </li>
+                                                                                                {% endif%} {% endfor %}{% endfor %}
                         </ul>
                     </div>
                     {% else %}
@@ -164,11 +454,33 @@
                     <h3 class="card-title">November</h3>
                     {% if user_collections %} 
                     <div class="card-content">
-                        <ul>
+                       <ul>
                             {% for collections in user_collections %}
                             {% for collection_items in collections.collection_items %} {% if collection_items.future_log == 'November' %}
-                            <li>&#x{{collection_items.item_bullet}}; {{collection_items.description}}</li>
-                            {% endif%} {% endfor %}{% endfor %}
+                            <li> 
+                            {% if collection_items.status == "done" %} <strike> &#x58; {% endif %}
+                            {% if collection_items.importance == "important" %}<span class="status"> <i class="fas fa-asterisk"></i> </span> {% endif %}
+                            {% if collection_items.item_bullet == "todo" %}<i class="fas fa-circle"></i>{% endif %}
+                            {% if collection_items.item_bullet == "note" %}&#xff0d;{% endif %}
+                            {% if collection_items.item_bullet == "event" %}<i class="far fa-circle"></i>{% endif %}
+                            
+                             <a href="/{{username}}/edit_collection_item/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" title="Edit Item" class="collection-item"> {{collection_items.collection_item_name}} </a>
+                            {% if collection_items.due_date %}  {% endif %}
+                           
+                            {% if collection_items.status == "done" %} </strike> {% endif %}
+                            
+                                        
+                                <form class="secondary-content" action="/{{username}}/collection_item_done/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
+                                    <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done"/>&#x58;</button>
+                                </form>
+                                <form class="secondary-content" action="/{{username}}/collection_item_push/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
+                                    <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
+                                    <input name="month" type="hidden" value="December">
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month"/>&#x2794;</button>
+                                </form>
+                                </li>
+                                                                                                {% endif%} {% endfor %}{% endfor %}
                         </ul>
                     </div>
                      {% else %}
@@ -180,10 +492,32 @@
                     {% if user_collections %} 
                     <div class="card-content">
                          <ul>
-                             {% for collections in user_collections %}
+                            {% for collections in user_collections %}
                             {% for collection_items in collections.collection_items %} {% if collection_items.future_log == 'December' %}
-                            <li>&#x{{collection_items.item_bullet}}; {{collection_items.description}}</li>
-                            {% endif%} {% endfor %} {% endfor %} 
+                            <li> 
+                            {% if collection_items.status == "done" %} <strike> &#x58; {% endif %}
+                            {% if collection_items.importance == "important" %}<span class="status"> <i class="fas fa-asterisk"></i> </span> {% endif %}
+                            {% if collection_items.item_bullet == "todo" %}<i class="fas fa-circle"></i>{% endif %}
+                            {% if collection_items.item_bullet == "note" %}&#xff0d;{% endif %}
+                            {% if collection_items.item_bullet == "event" %}<i class="far fa-circle"></i>{% endif %}
+                            
+                             <a href="/{{username}}/edit_collection_item/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" title="Edit Item" class="collection-item"> {{collection_items.collection_item_name}} </a>
+                            {% if collection_items.due_date %}  {% endif %}
+                           
+                            {% if collection_items.status == "done" %} </strike> {% endif %}
+                            
+                                        
+                                <form class="secondary-content" action="/{{username}}/collection_item_done/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
+                                    <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done"/>&#x58;</button>
+                                </form>
+                                <form class="secondary-content" action="/{{username}}/collection_item_push/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
+                                    <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
+                                    <input name="month" type="hidden" value="August">
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month"/>&#x2794;</button>
+                                </form>
+                                </li>
+                                                                                                {% endif%} {% endfor %}{% endfor %}
                         </ul>
                     </div>
                     {% else %}
