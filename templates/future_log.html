@@ -83,10 +83,10 @@
                             {% for collection_items in collections.collection_items %} {% if collection_items.future_log == 'July' %}
                             <li> 
                             {% if collection_items.status == "done" %} <strike> &#x58; {% endif %}
-                            {% if collection_items.importance == "important" %}<span class="status"> &#x26B9; </span> {% endif %}
-                            {% if collection_items.item_bullet == "todo" %}&#x26AB;{% endif %}
+                            {% if collection_items.importance == "important" %}<span class="status"> <i class="fas fa-asterisk"> </span> {% endif %}
+                            {% if collection_items.item_bullet == "todo" %}<i class="fas fa-circle"></i>{% endif %}
                             {% if collection_items.item_bullet == "note" %}&#xff0d;{% endif %}
-                            {% if collection_items.item_bullet == "event" %}&#x26AA;{% endif %}
+                            {% if collection_items.item_bullet == "event" %}<i class="far fa-circle"></i>{% endif %}
                             
                              <a href="/{{username}}/edit_collection_item/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" title="Edit Item" class="collection-item"><i class="fas fa-plus-circle"></i> {{collection_items.collection_item_name}} </a>
                             {% if collection_items.due_date %}  {% endif %}
