@@ -114,7 +114,7 @@ def update_collection_item_name(username, collection_name, collection_id, item_i
 
 @app.route("/<username>/collection_item_done/<collection_name>/<collection_id>/<item_id>", methods=['POST'])
 def collection_item_done(username, collection_name, collection_id, item_id):
-    mongo.db[username].update({"_id":ObjectId(collection_id), "collection_items": {"$elemMatch": {"item_id": int(item_id)}}}, {"$set": {"collection_items.$.status":"&#x58;"}})
+    mongo.db[username].update({"_id":ObjectId(collection_id), "collection_items": {"$elemMatch": {"item_id": int(item_id)}}}, {"$set": {"collection_items.$.status":"done"}})
     
     user_collections = load_collections_by_username(username)
     user_collections = list(user_collections)

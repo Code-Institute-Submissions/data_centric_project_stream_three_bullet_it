@@ -73,7 +73,7 @@
 
         <div class="col s12 calendar">
             <div class="col s12 calendar_row">
-                <div class="col s12 m6 calendar_month card z-depth-5">
+                <div class="col s12 m12 l6 calendar_month card z-depth-5">
 
                     <h3 class="card-title">July</h3>
                     {% if user_collections %} 
@@ -88,14 +88,11 @@
                             {% if collection_items.item_bullet == "note" %}&#xff0d;{% endif %}
                             {% if collection_items.item_bullet == "event" %}&#x2b58;{% endif %}
                             
-                            {{collection_items.collection_item_name}} 
-                            {% if collection_items.due_date %}  -  {{collection_items.due_date}} {% endif %}
+                             <a href="/{{username}}/edit_collection_item/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" title="Edit Item" class="collection-item"><i class="fas fa-plus-circle"></i> {{collection_items.collection_item_name}} </a>
+                            {% if collection_items.due_date %}  {% endif %}
                            
                             {% if collection_items.status == "done" %} </strike> {% endif %}
                             
-                                <form class="secondary-content" action="/{{username}}/edit_collection_item/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}">
-                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Edit Item"/><i class="material-icons">edit</i></button>
-                                </form>
                                         
                                 <form class="secondary-content" action="/{{username}}/collection_item_done/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
                                     <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
@@ -115,7 +112,7 @@
                     {% endif %}
 
                 </div>
-                <div class="col s12 m6 calendar_month card z-depth-5">
+                <div class="col s12 m12 l6 calendar_month card z-depth-5">
                     <h3 class="card-title">August</h3>
                     {% if user_collections %} 
                     <div class="card-content">
@@ -132,7 +129,7 @@
                 </div>
             </div>
             <div class="col s12 calendar_row">
-                <div class="col s12 m6 calendar_month card z-depth-5">
+                <div class="col s12 m12 l6 calendar_month card z-depth-5">
                     <h3 class="card-title">September</h3>
                     {% if user_collections %} 
                     <div class="card-content">
@@ -147,7 +144,7 @@
                     <p>You have no lists!</p>
                     {% endif %}
                 </div>
-                <div class="col s12 m6 calendar_month card z-depth-5">
+                <div class="col s12 m12 l6 calendar_month card z-depth-5">
                     <h3 class="card-title">October</h3>
                     {% if user_collections %} 
                     <div class="card-content">
@@ -163,7 +160,7 @@
                 </div>
             </div>
             <div class="col s12 calendar_row">
-                <div class="col s12 m6 calendar_month card z-depth-5">
+                <div class="col s12 m12 l6 calendar_month card z-depth-5">
                     <h3 class="card-title">November</h3>
                     {% if user_collections %} 
                     <div class="card-content">
@@ -178,7 +175,7 @@
                     <p>You have no lists!</p>
                     {% endif %}
                 </div>
-                <div class="col s12 m6 calendar_month card z-depth-5">
+                <div class="col s12 m12 l6 calendar_month card z-depth-5">
                     <h3 class="card-title">December</h3>
                     {% if user_collections %} 
                     <div class="card-content">

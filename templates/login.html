@@ -8,90 +8,116 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
-    <script type="text/javascript" src="{{ url_for('static',filename='js/home.js') }}"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    
     <title>Bullet It</title>
 </head>
 
 <body>
 
-    <div class="container">
-        <div class="row">
-            <div class="col s12">
-                <h1>Bullet It!</h1>
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col s12 journal">
-                <h2 id = message></h2>
-            </div>
-        </div>
-    </div>
-
-
-
-    <div class="container">
-        <div class="section">
+    <div class="container login">
+        <div class="container">
             <div class="row">
-                <div class="col s6 offset-s3">
-                    <div class="card blue-grey lighten-5">
-                        <div class="card-content">
-                            <div class="card-title">Log in</div>
-                            <div class="row">
-                                <div class="col s12">
-                            <form action="/login" method="POST">
-                                <input type="text" name="username" placeholder="username" />
-                                </div>
-                                    <div class="col s12">
-                                        <button class="btn waves-effect waves-light" type="submit" value="Login">Login</button>
+                <div class="col s12 logo">
+                    <h1>Bullet It <i class="fas fa-bolt"></i></h1>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row" id="signup">
+            <div class="hide-on-med-and-up col s12">
+                <img src="static/images/bullet_it.jpg" alt ="Desk Flatlay Laptop Notebook">
+                <h2 id="mobile_message">TRACK...ORGANISE...PLAN</h2>
+                    <div class="section">
+                        <div class="row">
+                            <div class="col s10 offset-s1">
+                                <div class="card blue-grey lighten-5">
+                                    <div class="card-content" id ="login-box">
+                                        <div class="card-title">Log in</div>
+                                        <div class="row">
+                                            <div class="col s12">
+                                                <form action="/login" method="POST">
+                                                    <input type="text" name="username" placeholder="username" />
+                                            </div>
+                                            <div class="col s12">
+                                                <button class="btn waves-effect waves-light" type="submit" value="Login">Login</button>
+                                            </div>
+                                        </div>
+                                        </form>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="hide-on-small-only col m12 journal">
+                <h2 id=message></h2>
+                <div class="container">
+                    <div class="section">
+                        <div class="row">
+                            <div class="col s10 offset-s1">
+                                <div class="card blue-grey lighten-5">
+                                    <div class="card-content" id ="login-box">
+                                        <div class="card-title">Log in</div>
+                                        <div class="row">
+                                            <div class="col s12">
+                                                <form action="/login" method="POST">
+                                                    <input type="text" name="username" placeholder="username" />
+                                            </div>
+                                            <div class="col s12">
+                                                <button class="btn waves-effect waves-light" type="submit" value="Login">Login/Sign Up</button>
+                                            </div>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    
 
-    <div class="container">
-        <div class="row">
-            <div class="s12">
-                <h3 class="text-center">Bullet It!</h3>
-                <p>Bullet It is an an organisation application whose design has been inspired by the immensely popular anolog system called Bullet Journaling. "So what is Bullet Journaling?" you may ask. Created by New York-based designer Ryder Carroll, the bullet journal is an organizational notebook system that can keep track of anything you want in a coherent and easy-to-manage way. It can be a to-do list, an event planner, an idea catcher, or whatever else you can think of. In fact, bullet journals are often all-of-the above.</p>
-                
-                <p>Bullet It allows the user to create "collections" of tasks, events or notes that they may come across in their daily lives and store them in this easy to use application. Each item that the user records is tagged with a "bullet": &#x23fa; : To Do, &#x2b58; : Event, &#xff0d; : Note. In addition &#x58; denotes that something is Done and &#x1f7b7; denotes that something is Important. Bullet it also allows the user to assign these snippets of information to a future month and displays these clearly in the user's "Future Log"</p>
-                <p>Sound good? What are you waiting for? Sign Up now and get bulleting your way to a happier more organised life today!</p>
+
+        
+            <div class="row">
+                <div class="col s12 about">
+                    <h3>What Is Bullet It?</h3>
+                    <p>Bullet It is an an organisational application whose design has been inspired by the immensely popular anolog system called Bullet Journaling. "So what is Bullet Journaling?" you may as. Created by New York-based designer Ryder Carroll, the bullet journal is an organizational notebook system that can keep track of anything you want in a coherent and easy-to-manage way. It can be a to-do list, an event planner, an idea catcher, or whatever else you can think of.
+                        In fact, bullet journals are often all-of-the above. You can find oout more about its origins <a href="http://bulletjournal.com/" target="_blank" >here</a></p>
+                        
+                        
+                    <h3>How Does It Work?</h3>
+                    <p>Bullet It allows the user to create "collections" of tasks, events or notes that they may come across in their daily lives and store them in this easy to use application. 
+                    <p>Each item that the user records is tagged with a "bullet": </p>
+                    <p><i class="fas fa-circle"></i>  Denotes an To-do</p>
+                    <p><i class="far fa-circle"></i>  Denotes an Event</p>
+                    <p><i class="fas fa-window-minimize"></i>  Denotes a Note</p>
+                    
+                    <p>The following bullets can also be added:</p>
+                    <p><i class="fas fa-times"></i>  Denotes that something is Done </p>
+                    <p><i class="fas fa-asterisk"></i>  Denotes that something is Important</p>
+                    
+                     <p>Bullet it also allows the user to assign these snippets of information to a future month and displays these clearly in the user's "Future Log".</p>
+                     <p>Here an item can be deferred to another month by hitting the Migrate button <i class="fas fa-arrow-right"></i> </p>
+                 
+                    
+                </div>
+            </div>
+      
+       
+            <div class="row">
+                <div class="col s12 center-align">
+                    <h3>Sign Up Now!</h3>
+                  <p>Sound good? What are you waiting for?<a href="#signup"> Sign Up</a> now and get bulleting your way to a happier more organised life today!</p>  
+                </div>
             </div>
         </div>
-    </div>
-   <script>
-        let quote = 'TRACK...ORGANISE...PLAN';
-        let messages2 = [];
-        for (let i = 0; i < quote.length; i++) {
-            messages2 += quote[i];
-        }
-
-        let messages = messages2,
-            counter = 0,
-            target = document.getElementById("message");
-
-        setInterval(function() {
-            if (counter < messages.length) {
-                target.innerHTML += messages[counter];
-                counter++;
-
-            }
-
-        }, 100);
-    </script>
+        
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static',filename='js/home.js') }}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-
 </body>
 
 </html>
