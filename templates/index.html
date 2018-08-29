@@ -17,7 +17,7 @@
                     <h2 class="index_header">Index</h2>
                     <ul id="index_list">
                         <li><input type="hidden" name="username" value="{{username}}" />
-                           <a href="/{{username}}/show_future_log"><i class="material-icons">star</i> Future Log</a>
+                            <a href="/{{username}}/show_future_log"><i class="material-icons">star</i> Future Log</a>
                         </li>
                         <li><input type="hidden" name="username" value="{{username}}" />
                             <a href="/{{username}}/get_collections"><i class="material-icons">star</i> Collections</a></li>
@@ -27,5 +27,32 @@
         </div>
     </div>
 </div>
+
+<div class="container center-align key">
+    <div class="section">
+        <div class="row">
+            <div class="col s8 offset-s2">
+                <div class="card blue-grey lighten-5">
+                    <div class="card-content" id="login-box">
+                        <div class="card-title">Bullet Key</div>
+                        <div class="row">
+                            <div class="col s12">
+                                <p>Each item that the user records is tagged with a "bullet": </p>
+                                <p><i class="fas fa-circle"></i> Denotes an To-do</p>
+                                <p><i class="far fa-circle"></i> Denotes an Event</p>
+                                <p><i class="fas fa-window-minimize"></i> Denotes a Note</p>
+                                <br>
+                                <p>The following tag can also be added:</p>
+                                <p><i class="fas fa-asterisk"></i> Denotes that something is Important</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 {% endblock %}

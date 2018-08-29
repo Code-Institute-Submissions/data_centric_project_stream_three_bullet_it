@@ -15,7 +15,7 @@ All in all a very useful application inspired by the immensely popular act of bu
 
 Follow this link to view deployed version of this website https://data-centric-nikral.herokuapp.com/
 
-### UX:
+### UX
 
 #### 1. Initial Planning 
 
@@ -35,20 +35,21 @@ The following is a list of some user stories:
  - As a user who wants to defer a task to the following months, I would like a way of doing this easily when looking at my calendar, so that nothing gets left behind.
  - As a user of an organisation application, I would like to be able to easily and clearly mark tasks or events as done in order to visualise my progress.
 
-#### 2. Wireframe
+#### 3. Wireframes
 
 After the initial planning stage, I developed these wireframes using [Balsamiq](https://www.balsamiq.com "Balsamiq Homepage"). At this point I fine tuned down my features and layout. There were some cosmetic adjustments during the development process but on a whole the original mockups were followed quite closely. All wireframes have been included in a file labelled "Wireframes" for project review.
 
-#### 2. Databse Schema Design
+#### 4. Database Schema Design
 
 Using a MongoDB, a non-relational database required a lot of forward planning and mapping out of how I would go about designing my databse in a way that would work for my application model. As I planned on having multiple user functionality, thought needed to be given on how to best store this data. After mapping a few options out on paper, it was decided to go with a schema where each user was a "collection" in MongoDB terms and then each category of list groups was a "document" and so with a mongo assigned ID. Within this document I store a list of items belonging to the category in question. As I required each item to have various properties, one of the challenges was to generate and store an ID for each item created in order to allow manipulation and viewing of all data properties.
 An illustration of the database schema design has been included in a file labelled "Database Schema Design" for project review.
 
-#### 3. Overall Look and Feel
+#### 5. Overall Look and Feel
 
-As this is  functional application where people want to clear their heads and organise their life, it needed a clean and simple interface. After some research I found the best option was to use Google's Materialize framework for some of the visual features. This provides the application with responsiveness and a clean flow when navigating around the site. I chose purple and white as my base colours for the site using variations of this throughout including a linear gradient at the top of each application page to create clean, stylish and readable headings. This colour provides a strong contrast to the white and gives a feeling of energy and warmth which are feelings which one would appreciate when organising their life. 
+As this is functional application where people want to clear their heads and organise their life, it needed a clean and simple interface. After some research I found the best option was to use Google's Materialize framework for some of the visual features. This provides the application with responsiveness and a clean flow when navigating around the site. I chose purple and white as my base colours for the site using variations of this throughout including a linear gradient at the top of each application page to create clean, stylish and readable headings. This colour provides a strong contrast to the white and gives a feeling of energy and warmth which are feelings which one would appreciate when organising their life. 
 
-### Features:
+### Features
+
 - This is a multipage application website built using Google's Materialize framework for responsive layout and navigation. 
 - There is a simple homepage enlightening the user about Bullet Journaling and its origin. Here there is also a simple login/signup interface. Once logged in there is a clean navigation menu and path for users to follow to allow them to commence organising and tracking their lives. 
 - The user can create, read, update, and delete all items and cartegories with ease.
@@ -58,6 +59,7 @@ As this is  functional application where people want to clear their heads and or
 - Finally, in the Future Log the user has the option of pushing an item forward to the next month if not complete/obsolete and also can mark items as done from this page. 
 
 #### Future Development
+
 - The login/sign up functionality may be developed in the future to include password authentication.
 - There may also be scope to develop a "Monthly Log" where users can view a monthly calendar to view their tasks.
 
@@ -66,7 +68,7 @@ As this is  functional application where people want to clear their heads and or
 - HTML5 
 - CSS3 - Along with using CSS for styling this was also used to create the linear gradient added to the tops of the application pages.
 - [Materialize](https://materializecss.com/ "Materialize Homepage")  - used for responsive layout, clean navigation and list layout.
-- Javascript & [Jquery](https://jquery.com/Jquery "Jquery Homepage")  - Used for the typewriter effect on the desktop view for the homepage. Materialize also uses these for some of its navigation features e.g. accoridons and side navigation for mobile devices.
+- JavaScript & [Jquery](https://jquery.com/Jquery "Jquery Homepage")  - Used for the typewriter effect on the desktop view for the homepage. Materialize also uses these for some of its navigation features e.g. accoridons and side navigation for mobile devices.
 - Python 3 - a Python file named "app.py" renders the html templates for this CRUD application and builds a web server using Flask PyMongo to interact with MongoDB.
 - [Flask Framework](http://flask.pocoo.org/ "Flask Homepage") - a Python micro-framework that was used to serve the data and render the HTML pages for this application.
 - [MongoDB](https://www.mongodb.com/ "MongoDB Homepage") -NoSQL database that converts and presents data in JSON format.
@@ -75,9 +77,10 @@ As this is  functional application where people want to clear their heads and or
 
 ### Testing
 
+- Automatic testing was carried out throughout the development of the project and progress can be viewed in the "htmlcov" folder.
 - Manual testing was carried out on this site.
 - All code used has been tested to ensure that everything is working as it ought to.
-- All CSS code has passed the official [Jigsaw Validator](https://jigsaw.w3.org/css-validator/ "Jigsaw Validator Homepage")
+-  The only issues arising from the CSS code assessment from the official [Jigsaw Validator](https://jigsaw.w3.org/css-validator/ "Jigsaw Validator Homepage") are those contained in the Materialize CSS file linked to my project which is out of my control.
 - [Cross Browser Testing](https://crossbrowsertesting.com/ "Cross Browser Testing Homepage")  was used to ensure that the site has been tested for viewing support across the following browsers:
   - Google Chrome
   - Opera
@@ -90,7 +93,8 @@ As this is  functional application where people want to clear their heads and or
   - [Google Resizer](https://material.io/tools/resizer/ "Google Resizer Homepage")
   - [Mobile Test](http://mobiletest.me/ "Mobile test Homepage")
 
-#### Known Bugs 
+#### Known Bugs
+
 - It appears that Internet Explorer 11 does not support certain aspects of the Materialize framework used for some features of this application. This is something I intend to look at further in the future. However, after reasearching the user stats IE11 ranks relatively low.
 
 ### Deployment
