@@ -56,6 +56,10 @@ h1,h2,h3 {
     padding: 1.8rem;
 }
 
+#login-box-mobile {
+    padding: 1.8rem;
+}
+
 img { max-width: 100%; height: auto; }
 
 #index_list {
@@ -150,8 +154,13 @@ color: #af7ac5;
   background-color: black;
 }
 
+.btn:visited {
+  background-color: black;
+}
+
 .fut_btn {
     padding: 0 0.8rem;
+    background-color: #AF7AC5;
 }
 
 .card-content ul li {
@@ -247,4 +256,7 @@ color: #af7ac5;
 .status {
     color: red;
     font-weight: bold;
+}
+#logintext {
+    text-transform:lowercase;
 }

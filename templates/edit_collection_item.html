@@ -8,6 +8,7 @@
     </div>
 </div>
 
+
 <div class="container">
     <div class="row">
         <div class="container">
@@ -19,32 +20,32 @@
                         <input name="{{i.item_id}}" type="text" value="{{i.collection_item_name}}">
                         <input type="text" name="collection_item_description"  value="{{i.description}}" />
                         <select name="item_bullet" class="selectpicker form-control" >
-                                <option value="todo" type="text" {% if i.item_bullet == "todo" %}selected="selected"{% endif %}>&#x26AB; : To Do</option>
-                                <option value="event" type="text" {% if i.item_bullet == "event" %}selected="selected"{% endif %}>&#x26AA; : Event</option>
-                                <option value="note" type="text" {% if i.item_bullet == "note" %}selected="selected"{% endif %}>&#xff0d; : Note</option>
+                                <option value="todo"  {% if i.item_bullet == "todo" %}selected="selected"{% endif %}>&#x26AB; : To Do</option>
+                                <option value="event"  {% if i.item_bullet == "event" %}selected="selected"{% endif %}>&#x26AA; : Event</option>
+                                <option value="note"  {% if i.item_bullet == "note" %}selected="selected"{% endif %}>&#xff0d; : Note</option>
                                 </select>
                        
                       
                      <select name="future_log" class="selectpicker form-control">
-                                <option value="not set" type="text">Set Later</option>
-                                 <option value="January" type="text" {% if i.future_log == "January" %} selected="selected"{% endif %}>January</option>
-                                  <option value="February" type="text" {% if i.future_log == "February" %} selected="selected"{% endif %}>February</option>
-                                   <option value="March" type="text" {% if i.future_log == "March" %} selected="selected"{% endif %}>March</option>
-                                    <option value="April" type="text" {% if i.future_log == "April" %} selected="selected"{% endif %}>April</option>
-                                     <option value="May" type="text" {% if i.future_log == "May" %} selected="selected"{% endif %}>May</option>
-                                      <option value="June" type="text" {% if i.future_log == "June" %} selected="selected"{% endif %}>June</option>
-                                  <option value="July" type="text" {% if i.future_log == "July" %} selected="selected"{% endif %}>July</option>
-                                    <option value="August" type="text" {% if i.future_log == "August" %} selected="selected"{% endif %}>August</option>
-                                    <option value="September" type="text" {% if i.future_log == "September" %} selected="selected"{% endif %}>September</option>
-                                    <option value="October" type="text" {% if i.future_log == "October" %} selected="selected"{% endif %}>October</option>
-                                    <option value="November" type="text" {% if i.future_log == "November" %} selected="selected"{% endif %}>November</option>
-                                    <option value="December" type="text" {% if i.future_log == "December" %} selected="selected"{% endif %}>December</option>
+                                <option value="not set" >Set Later</option>
+                                 <option value="January" {% if i.future_log == "January" %} selected="selected"{% endif %}>January</option>
+                                  <option value="February" {% if i.future_log == "February" %} selected="selected"{% endif %}>February</option>
+                                   <option value="March" {% if i.future_log == "March" %} selected="selected"{% endif %}>March</option>
+                                    <option value="April" {% if i.future_log == "April" %} selected="selected"{% endif %}>April</option>
+                                     <option value="May" {% if i.future_log == "May" %} selected="selected"{% endif %}>May</option>
+                                      <option value="June" {% if i.future_log == "June" %} selected="selected"{% endif %}>June</option>
+                                  <option value="July" {% if i.future_log == "July" %} selected="selected"{% endif %}>July</option>
+                                    <option value="August" {% if i.future_log == "August" %} selected="selected"{% endif %}>August</option>
+                                    <option value="September" {% if i.future_log == "September" %} selected="selected"{% endif %}>September</option>
+                                    <option value="October" {% if i.future_log == "October" %} selected="selected"{% endif %}>October</option>
+                                    <option value="November"  {% if i.future_log == "November" %} selected="selected"{% endif %}>November</option>
+                                    <option value="December" {% if i.future_log == "December" %} selected="selected"{% endif %}>December</option>
                                 </select>
                                 
                         <div class="input-field col s12">
                             <i class="material-icons prefix">today</i>
                             <input id="due_date" name="due_date" type="text" class="datepicker" value="{{i.due_date}}">
-                            <label for="icon_prefix">Due Date</label>
+                            <label for="due_date">Due Date</label>
                         </div>
                         <div class="row">
                         <div class="col s12">

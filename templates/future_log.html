@@ -26,7 +26,7 @@
                             <div class="radio_buttons">
                                 <div id="futuremonthitem">
                                     {% if user_collections %} {% for collection in user_collections %} {% for collection_items in collection.collection_items %} {% if collection_items.future_log == 'not set' %}
-                                    <label><input type="radio" name="futuremonthitem" value="{{collection._id}} {{collection_items.item_id}} {{collection_items.collection_item_name}} "><span>{{collection_items.description}}</span></label> {% endif%}
+                                    <label><input type="radio" name="futuremonthitem" value="{{collection._id}} {{collection_items.item_id}} {{collection_items.collection_item_name}} " required><span>{{collection_items.description}}</span></label> {% endif%}
                                     {% endfor %} {% endfor %} {% endif %}
                                 </div>
                             </div>
@@ -34,7 +34,7 @@
                         <div class="col s6">
                             <div class="radio_buttons">
                                 <div id="months">
-                                    <label><input type="radio" name="month" value="July"><span>January</span></label>
+                                    <label><input type="radio" name="month" value="July" required><span>January</span></label>
                                     <label><input type="radio" name="month" value="July"><span>February</span></label>
                                     <label><input type="radio" name="month" value="July"><span>March</span></label>
                                     <label><input type="radio" name="month" value="July"><span>April</span></label>
@@ -53,7 +53,7 @@
                     
                     <div class="row">
                         <div class="col s12 center-align">
-                            <button class="btn waves-effect waves-light" type="submit" />assign</button>
+                            <button class="btn waves-effect waves-light" type="submit" >assign</button>
                         </div>
                     </div>
 
@@ -62,7 +62,7 @@
         </div>
 
 <h4 class="center-align">Future Log</h4>
-<p class="center-align">Should you wish to mark an item as done click <button class="btn waves-effect waves-light fut_btn" title="Mark as Done"/>&#x58;</button></p><p class="center-align"> To migrate an item to the following month click <button class="btn waves-effect waves-light fut_btn" title="Migrate to Next Month"/>&#x2794;</button></p>
+<p class="center-align">Should you wish to mark an item as done click <button class="btn waves-effect waves-light fut_btn" title="Mark as Done" disabled>&#x58;</button></p><p class="center-align"> To migrate an item to the following month click <button class="btn waves-effect waves-light fut_btn" title="Migrate to Next Month" disabled>&#x2794;</button></p>
 
         <div class="col s12 calendar">
             <div class="col s12 calendar_row">
@@ -89,12 +89,12 @@
                                         
                                 <form class="secondary-content" action="/{{username}}/collection_item_done/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
                                     <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
-                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done"/>&#x58;</button>
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done">&#x58;</button>
                                 </form>
                                 <form class="secondary-content" action="/{{username}}/collection_item_push/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
                                     <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
                                     <input name="month" type="hidden" value="February">
-                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month"/>&#x2794;</button>
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month">&#x2794;</button>
                                 </form>
                                 </li>
                                                                                                 {% endif%} {% endfor %}{% endfor %}
@@ -128,12 +128,12 @@
                                         
                                 <form class="secondary-content" action="/{{username}}/collection_item_done/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
                                     <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
-                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done"/>&#x58;</button>
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done">&#x58;</button>
                                 </form>
                                 <form class="secondary-content" action="/{{username}}/collection_item_push/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
                                     <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
                                     <input name="month" type="hidden" value="March">
-                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month"/>&#x2794;</button>
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month">&#x2794;</button>
                                 </form>
                                 </li>
                                                                                                 {% endif%} {% endfor %}{% endfor %}
@@ -167,12 +167,12 @@
                                         
                                 <form class="secondary-content" action="/{{username}}/collection_item_done/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
                                     <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
-                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done"/>&#x58;</button>
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done">&#x58;</button>
                                 </form>
                                 <form class="secondary-content" action="/{{username}}/collection_item_push/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
                                     <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
                                     <input name="month" type="hidden" value="April">
-                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month"/>&#x2794;</button>
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month">&#x2794;</button>
                                 </form>
                                 </li>
                                                                                                 {% endif%} {% endfor %}{% endfor %}
@@ -206,12 +206,12 @@
                                         
                                 <form class="secondary-content" action="/{{username}}/collection_item_done/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
                                     <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
-                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done"/>&#x58;</button>
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done">&#x58;</button>
                                 </form>
                                 <form class="secondary-content" action="/{{username}}/collection_item_push/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
                                     <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
                                     <input name="month" type="hidden" value="May">
-                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month"/>&#x2794;</button>
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month">&#x2794;</button>
                                 </form>
                                 </li>
                                                                                                 {% endif%} {% endfor %}{% endfor %}
@@ -245,12 +245,12 @@
                                         
                                 <form class="secondary-content" action="/{{username}}/collection_item_done/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
                                     <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
-                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done"/>&#x58;</button>
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done">&#x58;</button>
                                 </form>
                                 <form class="secondary-content" action="/{{username}}/collection_item_push/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
                                     <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
                                     <input name="month" type="hidden" value="June">
-                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month"/>&#x2794;</button>
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month">&#x2794;</button>
                                 </form>
                                 </li>
                                                                                                 {% endif%} {% endfor %}{% endfor %}
@@ -283,12 +283,12 @@
                                         
                                 <form class="secondary-content" action="/{{username}}/collection_item_done/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
                                     <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
-                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done"/>&#x58;</button>
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done">&#x58;</button>
                                 </form>
                                 <form class="secondary-content" action="/{{username}}/collection_item_push/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
                                     <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
                                     <input name="month" type="hidden" value="July">
-                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month"/>&#x2794;</button>
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month">&#x2794;</button>
                                 </form>
                                 </li>
                                                                                                 {% endif%} {% endfor %}{% endfor %}
@@ -323,12 +323,12 @@
                                         
                                 <form class="secondary-content" action="/{{username}}/collection_item_done/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
                                     <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
-                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done"/>&#x58;</button>
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done">&#x58;</button>
                                 </form>
                                 <form class="secondary-content" action="/{{username}}/collection_item_push/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
                                     <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
                                     <input name="month" type="hidden" value="August">
-                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month"/>&#x2794;</button>
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month">&#x2794;</button>
                                 </form>
                                 </li>
                                                                                                 {% endif%} {% endfor %}{% endfor %}
@@ -361,12 +361,12 @@
                                         
                                 <form class="secondary-content" action="/{{username}}/collection_item_done/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
                                     <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
-                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done"/>&#x58;</button>
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done">&#x58;</button>
                                 </form>
                                 <form class="secondary-content" action="/{{username}}/collection_item_push/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
                                     <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
                                     <input name="month" type="hidden" value="September">
-                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month"/>&#x2794;</button>
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month">&#x2794;</button>
                                 </form>
                                 </li>
                                                                                                 {% endif%} {% endfor %}{% endfor %}
@@ -400,12 +400,12 @@
                                         
                                 <form class="secondary-content" action="/{{username}}/collection_item_done/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
                                     <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
-                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done"/>&#x58;</button>
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done">&#x58;</button>
                                 </form>
                                 <form class="secondary-content" action="/{{username}}/collection_item_push/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
                                     <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
                                     <input name="month" type="hidden" value="October">
-                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month"/>&#x2794;</button>
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month">&#x2794;</button>
                                 </form>
                                 </li>
                                                                                                 {% endif%} {% endfor %}{% endfor %}
@@ -437,12 +437,12 @@
                                         
                                 <form class="secondary-content" action="/{{username}}/collection_item_done/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
                                     <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
-                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done"/>&#x58;</button>
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done">&#x58;</button>
                                 </form>
                                 <form class="secondary-content" action="/{{username}}/collection_item_push/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
                                     <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
                                     <input name="month" type="hidden" value="November">
-                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month"/>&#x2794;</button>
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month">&#x2794;</button>
                                 </form>
                                 </li>
                                                                                                 {% endif%} {% endfor %}{% endfor %}
@@ -476,12 +476,12 @@
                                         
                                 <form class="secondary-content" action="/{{username}}/collection_item_done/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
                                     <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
-                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done"/>&#x58;</button>
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done">&#x58;</button>
                                 </form>
                                 <form class="secondary-content" action="/{{username}}/collection_item_push/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
                                     <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
                                     <input name="month" type="hidden" value="December">
-                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month"/>&#x2794;</button>
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month">&#x2794;</button>
                                 </form>
                                 </li>
                                                                                                 {% endif%} {% endfor %}{% endfor %}
@@ -513,12 +513,12 @@
                                         
                                 <form class="secondary-content" action="/{{username}}/collection_item_done/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
                                     <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
-                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done"/>&#x58;</button>
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Mark as Done">&#x58;</button>
                                 </form>
                                 <form class="secondary-content" action="/{{username}}/collection_item_push/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
                                     <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
                                     <input name="month" type="hidden" value="August">
-                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month"/>&#x2794;</button>
+                                    <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month">&#x2794;</button>
                                 </form>
                                 </li>
                                                                                                 {% endif%} {% endfor %}{% endfor %}

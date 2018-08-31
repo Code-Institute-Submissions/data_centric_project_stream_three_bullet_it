@@ -17,10 +17,10 @@
                 <div class="col s12">
                     <form action="/{{username}}/create_new_collection" method="POST">
                         <div class="input-field col s8 add-collection">
-                            <input type="text" class="validate" name="collection_name" placeholder="Add to collections.." />
+                            <input type="text" class="validate" name="collection_name" placeholder="Add to collections.." required/>
                         </div>
                         <div class="col s4" id="add-collection-button">
-                            <button class="btn waves-effect waves-light" type="submit" /><i class="material-icons">add</i></button>
+                            <button class="btn waves-effect waves-light" type="submit" ><i class="material-icons">add</i></button>
                         </div>
                     </form>
                 </div>
@@ -34,12 +34,12 @@
 
             <a href="/{{username}}/{{collection.name}}/{{collection._id}}" class="collection-item">{{collection.name}}
         <form class="secondary-content" action="/{{username}}/edit_collection/{{collection._id}}">
-            <button class="btn waves-effect waves-light" type="submit" /><i class="material-icons">edit</i></button>
+            <button class="btn waves-effect waves-light" type="submit" ><i class="material-icons">edit</i></button>
         </form>
         <form class="secondary-content" action="/{{username}}/delete_collection/{{collection._id}}" method="POST">
-            <button class="btn waves-effect waves-light" type="submit" /><i class="material-icons">delete_forever</i></button>
+            <button class="btn waves-effect waves-light" type="submit" ><i class="material-icons">delete_forever</i></button>
         </form>
-</a> {% endfor %} {% else %}
+ {% endfor %} {% else %}
             <p>You have no lists!</p>
             {% endif %}
         </div>

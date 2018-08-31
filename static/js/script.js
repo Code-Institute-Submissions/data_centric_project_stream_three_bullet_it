@@ -30,3 +30,10 @@ typeWriter("TRACK...ORGANISE...PLAN", 0);
             close: 'Ok',
             closeOnSelect: false 
         });
+        
+        
+        
+function forceLower(strInput) 
+{
+    strInput.value=strInput.value.toLowerCase();
+}

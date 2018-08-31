@@ -13,9 +13,10 @@ All in all a very useful application inspired by the immensely popular act of bu
 
 ## Live Demo
 
-Follow this link to view deployed version of this website https://data-centric-nikral.herokuapp.com/
+Follow this link to view deployed version of this website https://data-centric-nikral-bullet-it.herokuapp.com/
 
-### UX
+
+## UX
 
 #### 1. Initial Planning 
 
@@ -27,7 +28,7 @@ From here I decided to complete some user stories before commencing wireframing.
 
 The following is a list of some user stories:
 
- - As a user of a planner application, I need to be able to login/sign up quickly when I land on the site's homepage, this will break down the pyschological barriers of commencing my planning.
+ - As a user of a planner application, I need to be able to login/sign up quickly when I land on the site's homepage, this will ensure that I see the content is relevant to me.
  - As a user seeking an application to store to do lists, I want to be have quick access to view my lists and also add items quickly on the go, this will help me not to forget anything and ensure that everything that I think of is recorded.
  - As a user seeking to store items on the go, I would like to be able to adjust details of these list items with ease so that information is accurate and up to date.
  - As a user looking to schedule events and tasks, I would like to be able to view all items together in one place in the context of a calendar, this will help me visualise my time. 
@@ -37,12 +38,12 @@ The following is a list of some user stories:
 
 #### 3. Wireframes
 
-After the initial planning stage, I developed these wireframes using [Balsamiq](https://www.balsamiq.com "Balsamiq Homepage"). At this point I fine tuned down my features and layout. There were some cosmetic adjustments during the development process but on a whole the original mockups were followed quite closely. All wireframes have been included in a file labelled "Wireframes" for project review.
+After the initial planning stage, I developed these wireframes using [Balsamiq](https://www.balsamiq.com "Balsamiq Homepage"). At this point I fine tuned down my features and layout. There were some cosmetic adjustments during the development process but on a whole the original mockups were followed quite closely. All wireframes have been included in a file labelled [wireframes](wireframes/) for project review.
 
 #### 4. Database Schema Design
 
 Using a MongoDB, a non-relational database required a lot of forward planning and mapping out of how I would go about designing my databse in a way that would work for my application model. As I planned on having multiple user functionality, thought needed to be given on how to best store this data. After mapping a few options out on paper, it was decided to go with a schema where each user was a "collection" in MongoDB terms and then each category of list groups was a "document" and so with a mongo assigned ID. Within this document I store a list of items belonging to the category in question. As I required each item to have various properties, one of the challenges was to generate and store an ID for each item created in order to allow manipulation and viewing of all data properties.
-An illustration of the database schema design has been included in a file labelled "Database Schema Design" for project review.
+An illustration of the database schema design has been included in a file labelled [db schema design](db schema design/) for project review.
 
 #### 5. Overall Look and Feel
 
@@ -77,9 +78,13 @@ As this is functional application where people want to clear their heads and org
 
 ### Testing
 
-- Automatic testing was carried out throughout the development of the project and progress can be viewed in the "htmlcov" folder.
-- Manual testing was carried out on this site.
-- All code used has been tested to ensure that everything is working as it ought to.
+- Manual testing was carried out on this site. Some of the items found include:
+  - All form fields were tested to see what what happen if left blank, in some cases this caused issues. To resolve this I put in a "required" tag against relevant fields.
+  - The username at log in accepted both uppercase and lowercase which may lead to user confusion/duplication. I resolved this by forcing all usernames to be lowercase.
+  - All aspects of CRUD functionality was tested to ensure that the correct database records were updated.
+  - All links were tested to ensure that they functioned as expected
+  - I tested to see if both the experience for a new user and a user with a lot of data performed as expected
+  - I was originally storing some of the icons as their Unicode value, but discovered that this did not work as expected on Mac devices. I since updated the code to store strings in the database, which triggers display of font awesome icons instead.
 -  The only issues arising from the CSS code assessment from the official [Jigsaw Validator](https://jigsaw.w3.org/css-validator/ "Jigsaw Validator Homepage") are those contained in the Materialize CSS file linked to my project which is out of my control.
 - [Cross Browser Testing](https://crossbrowsertesting.com/ "Cross Browser Testing Homepage")  was used to ensure that the site has been tested for viewing support across the following browsers:
   - Google Chrome
@@ -92,6 +97,7 @@ As this is functional application where people want to clear their heads and org
   - [Responsinator](http://www.responsinator.com/ "Responsinator Homepage")
   - [Google Resizer](https://material.io/tools/resizer/ "Google Resizer Homepage")
   - [Mobile Test](http://mobiletest.me/ "Mobile test Homepage")
+- Along with the emulator tests above, the site has been tested on my own phone along with other physical devices to ensure all looks and works as it should. 
 
 #### Known Bugs
 
@@ -107,7 +113,7 @@ If you wish to clone this project, follow the below instructions. In developing 
 
 1. Please note that access keys for MongoDB are hidden and tied to my account, you will need to obtain your own connection. [mLab](https://mlab.com  "mLab Homepage") was used for this project.
 2. If you wish to use the Cloud 9 code editor click here https://c9.io
-3. Proceed to the folder which you want to store the cloned project and in your terminal & type: `$ git clone https://github.com/nikralave/data_centric_project_stream_three.git`
+3. Proceed to the folder which you want to store the cloned project and in your terminal & type: `$ git clone https://github.com/nikralave/data_centric_project_stream_three_bullet_it.git`
 4. Install the project dependancies: `$ sudo pip3 install -r requirements.txt`
 5. When done cut ties with my github: `$ git remote rm origin`
 

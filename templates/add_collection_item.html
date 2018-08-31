@@ -16,34 +16,34 @@
                 <div class="col s12">
                     <form action="/{{username}}/{{collection_name}}/{{collection_id}}/add_item" method="POST">
                         <div class="input-field col s12">
-                            <input type="text" class="validate" name="collection_item_name" placeholder="Add item" />
+                            <input type="text" class="validate" name="collection_item_name" placeholder="Add item" required />
                         </div>
                         <div class="input-field col s12">
-                            <input type="text" class="validate" name="collection_item_description" placeholder="Add description" />
+                            <input type="text" class="validate" name="collection_item_description" placeholder="Add description" required/>
                         </div>
                         <div class="input-field col s12">
                             <select name="bullet" class="selectpicker form-control">
-                                <option value="todo" type="text">&#x26AB; : To Do</option>
-                                <option value="event" type="text">&#x26AA; : Event</option>
-                                <option value="note" type="text">&#xff0d; : Note</option>
+                                <option value="todo">&#x26AB; : To Do</option>
+                                <option value="event">&#x26AA; : Event</option>
+                                <option value="note">&#xff0d; : Note</option>
                                 </select>
                         </div>
 
                         <div class="input-field col s12">
                             <select name="future_log" class="selectpicker form-control">
-                                <option value="not set" type="text">Set Later</option>
-                                <option value="January" type="text">January</option>
-                                <option value="February" type="text">February</option>
-                                <option value="March" type="text">March</option>
-                                <option value="April" type="text">April</option>
-                                <option value="May" type="text">May</option>
-                                <option value="June" type="text">June</option>
-                                  <option value="July" type="text">July</option>
-                                    <option value="August" type="text">August</option>
-                                    <option value="September" type="text">September</option>
-                                    <option value="October" type="text">October</option>
-                                    <option value="November" type="text">November</option>
-                                    <option value="December" type="text">December</option>
+                                <option value="not set">Set Later</option>
+                                <option value="January">January</option>
+                                <option value="February">February</option>
+                                <option value="March" >March</option>
+                                <option value="April">April</option>
+                                <option value="May" >May</option>
+                                <option value="June">June</option>
+                                  <option value="July">July</option>
+                                    <option value="August">August</option>
+                                    <option value="September">September</option>
+                                    <option value="October">October</option>
+                                    <option value="November">November</option>
+                                    <option value="December">December</option>
                                 </select>
                         </div>
                             
@@ -51,7 +51,7 @@
                             <div class="input-field col s12">
                                 <i class="material-icons prefix">today</i>
                                 <input id="due_date" name="due_date" type="text" class="datepicker">
-                                <label for="icon_prefix">Due Date</label>
+                                <label for="due_date">Due Date</label>
                             </div>
                         </div>
                         <input type="checkbox" name="checkbox_id" id="checkbox_id" value="important">
@@ -59,7 +59,7 @@
                             
                         
                         <div class="col s12 center-align" id="add-collection-item-button">
-                            <button class="btn waves-effect waves-light" type="submit" value="ADD"/>ADD</button>
+                            <button class="btn waves-effect waves-light" type="submit" value="ADD">ADD</button>
                         </div>
                     </form>
                 </div>
@@ -76,5 +76,5 @@
             </div>
         </div>
 </div>
-</div>
+
 {% endblock %}
