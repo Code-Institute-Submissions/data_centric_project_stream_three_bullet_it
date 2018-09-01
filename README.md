@@ -9,7 +9,7 @@ The main purpose of this site is to enable the user to easily record and store n
 
 The application also gives a nod to the popular bullet journaling process by allowing users to tag list items with convenient bullet/icons which can be recognised at a glance once familiarity is obtained. The user can reach a handy key for these (stored on the "Index" page) from all pages of the application.  
 
-All in all, a very useful application inspired by the immensely popular act of bullet journaling. This application could be the perfect companion for an organised life!
+All in all, a very useful application inspired by the immensely popular act of bullet journaling. You can obtain more information on this on [Bullet Journal](http://bulletjournal.com/ "Bullet Journal Homepage").  This application could be the perfect companion for an organised life!
 
 ## Live Demo
 
@@ -104,6 +104,8 @@ As this is functional application where people want to clear their heads and org
 #### Known Bugs
 
 - It appears that Internet Explorer 11 does not support certain aspects of the Materialize framework used for some features of this application. This is something I intend to look at further in the future. However, after researching the user stats IE11 ranks relatively low.
+- While testing the add functionality, I discovered that if too many items are added to a month in the Future Log section, the list exapnds outside of its month on screen. I intend to put a fix in place for this by working out and assigning each month a minimum height in the CSS which would allow it to grow.
+- While testing the edit functionality in the Future Log, I noted that once a user is finished updating an item in the edit screen they are not directed back to the Future Log but instead to the Collection list itself. This is due to the fact that the edit functionality was initially built for the Collection list page and adding the link on the Future Log was a later addition  I also intend on looking at a fix for this. 
 
 ### Deployment
 
