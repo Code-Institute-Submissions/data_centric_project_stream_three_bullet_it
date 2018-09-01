@@ -4,7 +4,7 @@
     <div class="header__bg"></div>
     <div class="row">
         <div class="col s12">
-            <h3 class="list-heading">{{username}}'s Future Log 2018</h3>
+            <h3 class="list-heading">{{username|capitalize}}'s Future Log 2018</h3>
         </div>
     </div>
 </div>
@@ -517,7 +517,7 @@
                                 </form>
                                 <form class="secondary-content" action="/{{username}}/collection_item_push/{{collections.name}}/{{collections._id}}/{{collection_items.item_id}}" method="POST">
                                     <input name="item_id" type="hidden" value="{{collection_items.item_id}}">
-                                    <input name="month" type="hidden" value="August">
+                                    <input name="month" type="hidden" value="January">
                                     <button class="btn waves-effect waves-light fut_btn" type="submit" title="Migrate to Next Month">&#x2794;</button>
                                 </form>
                                 </li>
